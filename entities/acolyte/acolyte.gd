@@ -4,31 +4,52 @@ extends KinematicBody2D
 export (float) var acceleration_weight = 0.05
 export (int) var max_speed = 200
 
-var dir = Vector2()
-var velocity = Vector2()
+var _dir = Vector2()
+var _velocity = Vector2()
+var _target
+
+onready var _interact_area = $InteractArea
 
 
 func _physics_process(delta):
-	_get_input()
+	_get_movement_input()
 	_move()
 
 
-func _get_input():
-	dir = Vector2()
+func _unhandled_input(event):
+	if _target and event.is_action_pressed("interact"):
+		if _target.has_method("interact"):
+			_target.interact()
+
+
+func _get_movement_input():
+	_dir = Vector2()
 	
 	if Input.is_action_pressed("move_right"):
-		dir.x += 1
+		_dir.x += 1
 	if Input.is_action_pressed("move_left"):
-		dir.x -= 1
+		_dir.x -= 1
 	if Input.is_action_pressed("move_down"):
-		dir.y += 1
+		_dir.y += 1
 	if Input.is_action_pressed("move_up"):
-		dir.y -= 1
+		_dir.y -= 1
 		
-	dir = dir.normalized()
-
+	_dir = _dir.normalized()
+	
 
 func _move():
-	var target_velocity = dir * max_speed
-	velocity = velocity.linear_interpolate(target_velocity, acceleration_weight)
-	velocity = move_and_slide(velocity)
+	var target__velocity = _dir * max_speed
+	_velocity = _velocity.linear_interpolate(target__velocity, acceleration_weight)
+	_velocity = move_and_slide(_velocity)
+
+
+func _on_InteractArea_body_entered(body):
+	if (body.has_method("highlight")):
+		body.highlight()
+		_target = body
+
+
+func _on_InteractArea_body_exited(body):
+	if (body.has_method("unhighlight")):
+		body.unhighlight()
+		_target = null
