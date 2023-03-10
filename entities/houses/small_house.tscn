@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/houses/house_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://entities/houses/furniture_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=3]
+
+[node name="SmallHouse" type="Node2D"]
+
+[node name="House" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65536, 1, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 3, 0, 131072, 4, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 5, 0, 196608, 4, 0, 196609, 9, 0, 196610, 9, 0, 196611, 9, 0, 196612, 5, 0, 262144, 6, 0, 262145, 10, 0, 262146, 7, 0, 262147, 0, 0, 262148, 8, 0 )
+
+[node name="Furniture" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65539, 0, 0 )
+
+[node name="Dreamer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 56, 33 )
