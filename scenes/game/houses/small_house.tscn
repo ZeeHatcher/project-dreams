@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://entities/houses/house_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://entities/houses/furniture_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/game/houses/res/house_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/game/houses/res/furniture_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=3]
 
 [node name="SmallHouse" type="Node2D"]

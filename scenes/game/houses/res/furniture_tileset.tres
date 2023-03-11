@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://entities/houses/Basic Furniture.png" type="Texture" id=1]
+[ext_resource path="res://scenes/game/houses/assets/Basic Furniture.png" type="Texture" id=1]
 
 [resource]
 0/name = "bed"
