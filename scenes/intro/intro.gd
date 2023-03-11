@@ -29,7 +29,7 @@ func _unhandled_input(event):
 		if _page < content.size():
 			_show_page(_page)
 		else:
-			get_tree().change_scene("res://scenes/main.tscn")
+			get_tree().change_scene("res://scenes/game/game.tscn")
 
 
 func _show_page(page):
