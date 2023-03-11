@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/game/houses/res/building_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/game/houses/res/furniture_tileset.tres" type="TileSet" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Mansion" type="Node2D"]
 
 [node name="Building" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
