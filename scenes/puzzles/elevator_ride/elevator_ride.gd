@@ -62,10 +62,8 @@ func _check_level():
 func _check_game_over():
 	if _successes >= pass_requirement:
 		emit_signal("passed")
-		print("passed")
 	elif health <= 0:
 		emit_signal("failed")
-		print("failed")
 
 
 func _exit_passenger():
