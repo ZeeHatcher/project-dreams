@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/puzzles/elevator_ride/elevator_ride.gd" type="Script" id=1]
+[ext_resource path="res://scenes/minigames/elevator_ride/elevator_ride.gd" type="Script" id=1]
 [ext_resource path="res://entities/elevator/elevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/building_floor/building_floor.tscn" type="PackedScene" id=3]
 
