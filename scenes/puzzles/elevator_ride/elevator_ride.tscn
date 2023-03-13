@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/puzzles/elevator_ride/elevator_ride.gd" type="Script" id=1]
+[ext_resource path="res://entities/elevator/elevator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/building_floor/building_floor.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 0, -12 )
+b = Vector2( 0, 12 )
+
+[node name="ElevatorRide" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Road" type="Polygon2D" parent="."]
+position = Vector2( 120, 204 )
+color = Color( 0.14902, 0.14902, 0.14902, 1 )
+polygon = PoolVector2Array( 16, 4, 16, -4, -152, -4, -152, 4 )
+
+[node name="BuildingFloor" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 32 )
+level = "L5"
+
+[node name="BuildingFloor2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 64 )
+level = "L4"
+
+[node name="BuildingFloor3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 96 )
+level = "L3"
+
+[node name="BuildingFloor4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 128 )
+level = "L2"
+
+[node name="BuildingFloor5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 160 )
+level = "L1"
+
+[node name="BuildingFloor6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 192 )
+level = "G"
+
+[node name="SpawnPoint" type="Position2D" parent="."]
+position = Vector2( -16, 200 )
+
+[node name="WaitPoint" type="Position2D" parent="."]
+position = Vector2( 160, 200 )
+
+[node name="Elevator" parent="." instance=ExtResource( 2 )]
+
+[node name="ElevatorDoor" type="Area2D" parent="."]
+position = Vector2( 136, 188 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorDoor"]
+shape = SubResource( 1 )
+
+[node name="TargetLevel" type="Label" parent="."]
+margin_left = 112.0
+margin_top = 176.0
+margin_right = 152.0
+margin_bottom = 190.0
+text = "-"
+
+[connection signal="floor_reached" from="Elevator" to="." method="_on_Elevator_floor_reached"]
+[connection signal="area_entered" from="ElevatorDoor" to="." method="_on_ElevatorDoor_area_entered"]

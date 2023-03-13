@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/map/houses/res/building_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/map/houses/res/furniture_tileset.tres" type="TileSet" id=2]
+
+[node name="SmallHouse" type="Node2D"]
+
+[node name="Building" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 65536, 1, 0, 65537, 2, 0, 131075, 3, 0, 65537, 4, 0, 65537, 5, 0, 65538, 65536, 0, 131072, 65537, 0, 131073, 65538, 0, 131073, 65539, 0, 131073, 65540, 0, 131073, 65541, 0, 131074, 131072, 0, 131072, 131073, 0, 131073, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131074, 196608, 0, 196608, 196609, 0, 196609, 196610, 0, 196609, 196611, 0, 196609, 196612, 0, 196609, 196613, 0, 196610 )
+
+[node name="Furniture" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 3, 1, 2, 4, 0, 0, 65538, 3, 0, 131073, 4, 65537 )

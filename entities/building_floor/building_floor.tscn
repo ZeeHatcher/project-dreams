@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/building_floor/building_floor.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 16, 0 )
+b = Vector2( -16, 0 )
+
+[node name="BuildingFloor" type="Area2D"]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 1 )
+
+[node name="Background" type="Polygon2D" parent="."]
+color = Color( 1, 0.792157, 0.717647, 1 )
+polygon = PoolVector2Array( -24, -16, 176, -16, 176, 16, -24, 16 )
+
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color( 0.901961, 0.552941, 0.431373, 1 )
+polygon = PoolVector2Array( 24, 8, 176, 8, 176, 16, 24, 16 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 24.0
+margin_top = -6.0
+margin_right = 64.0
+margin_bottom = 8.0
+text = "L*"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
