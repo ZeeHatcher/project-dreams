@@ -14,28 +14,17 @@ const content = [
 
 var _page = 0
 
-onready var _image = $VBoxContainer/Image
-onready var _description = $VBoxContainer/PanelContainer/Description
+onready var _cutscene = $Cutscene
 
 
 func _ready():
-	_show_page(_page)
+	_cutscene.content = content
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
-		_page += 1
-		
-		if _page < content.size():
-			_show_page(_page)
-		else:
-			get_tree().change_scene("res://scenes/map/map.tscn")
+		_cutscene.next_page()
 
 
-func _show_page(page):
-	if page > content.size():
-		return
-	
-	var cont = content[page]
-	_image.texture = load(cont["image"])
-	_description.text = cont["text"]
+func _on_Cutscene_end():
+	get_tree().change_scene("res://scenes/map/map.tscn")
