@@ -27,3 +27,4 @@ margin_top = 7.0
 margin_right = 313.0
 margin_bottom = 41.0
 size_flags_vertical = 5
+autowrap = true
