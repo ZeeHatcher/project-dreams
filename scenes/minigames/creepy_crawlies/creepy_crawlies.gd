@@ -25,8 +25,8 @@ func _on_Timer_timeout():
 	emit_signal("failed")
 
 
-func _on_CreepyCrawlies_passed():
-	print("passed!")
+func _on_CreepyCrawlies_end(success):
+	MapData.save_minigame_result(Globals.Minigames.CREEPY_CRAWLIES, success)
 
 
 func _check_win_condition():

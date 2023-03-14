@@ -42,6 +42,10 @@ func _on_ElevatorDoor_area_entered(passenger):
 	_elevator.passenger = passenger
 
 
+func _on_ElevatorRide_end(success):
+	MapData.save_minigame_result(Globals.Minigames.ELEVATOR_RIDE, success)
+
+
 func _spawn_passenger():
 	var passenger = PassengerScene.instance()
 	passenger.position = _spawn_point.position
