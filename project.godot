@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Globals",
+"language": "GDScript",
+"path": "res://misc/globals.gd"
+} ]
+_global_script_class_icons={
+"Globals": ""
+}
+
 [application]
 
 config/name="Project Dreams"
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+MapData="*res://misc/map_data.gd"
 
 [display]
 

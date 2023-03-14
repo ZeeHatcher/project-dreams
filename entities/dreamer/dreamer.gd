@@ -1,11 +1,21 @@
 extends StaticBody2D
 
 
-export(PackedScene) var minigame
+signal dream_entered(minigame)
+
+export(Globals.Minigames) var minigame
+export(PackedScene) var minigame_scene
+
+
+func _ready():
+	if minigame in MapData.minigames_result:
+		set_collision_layer_bit(0, false)
+		
+		$Polygon2D.color = Color.green if MapData.minigames_result[minigame] else Color.red
 
 
 func interact():
-	get_tree().change_scene_to(minigame)
+	emit_signal("dream_entered", minigame_scene)
 
 
 func highlight():
