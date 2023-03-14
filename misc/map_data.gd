@@ -2,7 +2,7 @@ extends Node
 
 
 var player_position
-var minigames_result = {} # true for passed, false for failed, non-existent key means not completed
+var minigames_result = {} # 1 for passed, 0 for not complete, -1 for failed
 
 
 func save_minigame_result(minigame, success):

@@ -11,10 +11,6 @@ onready var _image = $Image
 onready var _description = $PanelContainer/Description
 
 
-func _ready():
-	_show_page(_page)
-
-
 func next_page():
 	_page += 1
 		

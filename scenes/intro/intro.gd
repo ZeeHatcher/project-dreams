@@ -12,8 +12,6 @@ const content = [
 	},
 ]
 
-var _page = 0
-
 onready var _cutscene = $Cutscene
 
 

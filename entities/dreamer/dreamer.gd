@@ -8,10 +8,11 @@ export(PackedScene) var minigame_scene
 
 
 func _ready():
-	if minigame in MapData.minigames_result:
+	if not minigame in MapData.minigames_result:
+		MapData.minigames_result[minigame] = 0
+	elif MapData.minigames_result[minigame] != 0:
 		set_collision_layer_bit(0, false)
-		
-		$Polygon2D.color = Color.green if MapData.minigames_result[minigame] else Color.red
+		$Polygon2D.color = Color.green if MapData.minigames_result[minigame] == 1 else Color.red
 
 
 func interact():

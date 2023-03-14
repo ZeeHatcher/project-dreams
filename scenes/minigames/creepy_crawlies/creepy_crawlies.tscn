@@ -37,6 +37,6 @@ rotation = -0.15869
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
 
-[connection signal="failed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ false ]]
-[connection signal="passed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ true ]]
+[connection signal="failed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ -1 ]]
+[connection signal="passed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ 1 ]]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

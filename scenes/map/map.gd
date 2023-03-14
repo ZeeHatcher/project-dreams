@@ -11,6 +11,9 @@ func _ready():
 	var dreamers = get_tree().get_nodes_in_group("dreamers")
 	for dreamer in dreamers:
 		dreamer.connect("dream_entered", self, "_on_Dreamer_dream_entered")
+	
+	
+	print(MapData.minigames_result)
 
 
 func _on_Dreamer_dream_entered(minigame):
