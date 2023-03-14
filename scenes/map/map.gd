@@ -19,4 +19,15 @@ func _on_Dreamer_dream_entered(minigame):
 
 
 func _on_Exit_body_entered(body):
+	if not _can_end():
+		return
+	
 	get_tree().change_scene("res://scenes/ending/ending.tscn")
+
+
+func _can_end():
+	for val in MapData.minigames_result.values():
+		if val == 0:
+			return false
+	
+	return true
