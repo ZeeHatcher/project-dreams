@@ -42,6 +42,16 @@ func _on_ElevatorDoor_area_entered(passenger):
 	_elevator.passenger = passenger
 
 
+func _on_ElevatorRide_passed():
+	print_debug("'passed' emitted from %s" % self)
+	_return_to_map()
+
+
+func _on_ElevatorRide_failed():
+	print_debug("'failed' emitted from %s" % self)
+	_return_to_map()
+
+
 func _spawn_passenger():
 	var passenger = PassengerScene.instance()
 	passenger.position = _spawn_point.position
@@ -71,3 +81,7 @@ func _exit_passenger():
 	_elevator.passenger = null
 	_target_level_label.text = "-"
 	passenger.move_to(passenger.position + Vector2.RIGHT * 1000)
+
+
+func _return_to_map():
+	get_tree().change_scene("res://scenes/map/map.tscn")

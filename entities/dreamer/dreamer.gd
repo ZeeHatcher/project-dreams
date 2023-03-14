@@ -1,8 +1,11 @@
 extends StaticBody2D
 
 
+export(PackedScene) var minigame
+
+
 func interact():
-	print_debug("'interact' called on '%s'" % self)
+	get_tree().change_scene_to(minigame)
 
 
 func highlight():
