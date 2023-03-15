@@ -63,6 +63,10 @@ func _on_Elevator_stopped_at_entrance():
 	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_entrance")
 
 
+func _on_ElevatorRide_end(success):
+	MapData.save_minigame_result(Globals.Minigames.ELEVATOR_RIDE, success)
+
+
 func _spawn_passenger():
 	var passenger = PassengerScene.instance()
 	passenger.position = _spawn_point.position
