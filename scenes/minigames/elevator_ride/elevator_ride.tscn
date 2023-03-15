@@ -17,29 +17,30 @@ position = Vector2( 272, 272 )
 color = Color( 0.14902, 0.14902, 0.14902, 1 )
 polygon = PoolVector2Array( 16, 4, 16, -4, -152, -4, -152, 4 )
 
-[node name="BuildingFloor" parent="." instance=ExtResource( 3 )]
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="BuildingFloor5" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 100 )
-level = "L5"
+level = 5
 
-[node name="BuildingFloor2" parent="." instance=ExtResource( 3 )]
+[node name="BuildingFloor4" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 132 )
-level = "L4"
+level = 4
 
-[node name="BuildingFloor3" parent="." instance=ExtResource( 3 )]
+[node name="BuildingFloor3" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 164 )
-level = "L3"
+level = 3
 
-[node name="BuildingFloor4" parent="." instance=ExtResource( 3 )]
+[node name="BuildingFloor2" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 196 )
-level = "L2"
+level = 2
 
-[node name="BuildingFloor5" parent="." instance=ExtResource( 3 )]
+[node name="BuildingFloor1" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 228 )
-level = "L1"
+level = 1
 
-[node name="BuildingFloor6" parent="." instance=ExtResource( 3 )]
+[node name="BuildingFloor" parent="Floors" instance=ExtResource( 3 )]
 position = Vector2( 312, 260 )
-level = "G"
 
 [node name="SpawnPoint" type="Position2D" parent="."]
 position = Vector2( 136, 268 )
