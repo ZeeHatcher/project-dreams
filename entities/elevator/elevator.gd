@@ -9,7 +9,7 @@ export(int) var speed = 100
 var passenger
 
 var _dir = 1
-var _is_moving = true
+var _is_moving = false
 var _target
 
 onready var _point = $PathFollow2D
@@ -61,7 +61,7 @@ func _move_to_target():
 
 
 func _is_target_reached():
-	return abs(_point.offset - _target) < 0.5
+	return abs(_point.offset - _target) < 0.1
 
 
 func _on_Platform_area_entered(area):
