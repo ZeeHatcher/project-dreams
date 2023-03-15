@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Label",
+"class": "Clock",
+"language": "GDScript",
+"path": "res://ui/clock/clock.gd"
+}, {
+"base": "Label",
+"class": "Counter",
+"language": "GDScript",
+"path": "res://ui/counter/counter.gd"
+}, {
 "base": "Node",
 "class": "Globals",
 "language": "GDScript",
 "path": "res://misc/globals.gd"
 } ]
 _global_script_class_icons={
+"Clock": "",
+"Counter": "",
 "Globals": ""
 }
 
