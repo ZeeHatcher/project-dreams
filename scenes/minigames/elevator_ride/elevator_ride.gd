@@ -16,10 +16,13 @@ onready var _elevator = $Elevator
 onready var _spawn_point = $SpawnPoint
 onready var _wait_point = $WaitPoint
 onready var _target_level_label = $TargetLevel
+onready var _failure_markers = $"%FailureMarkers"
 
 
 func _ready():
 	_spawn_passenger()
+	_failure_markers.max_value = health
+	_failure_markers.value = 0
 	
 
 func _unhandled_input(event):
@@ -61,6 +64,7 @@ func _check_level():
 		_successes += 1
 	else:
 		health -= 1
+		_failure_markers.value += 1
 
 
 func _check_game_over():

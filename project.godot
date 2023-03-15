@@ -35,6 +35,10 @@ window/size/height=360
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/segmented_progress/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
