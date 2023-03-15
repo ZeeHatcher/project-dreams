@@ -14,4 +14,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 shape = SubResource( 1 )
 
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = -4.0
+margin_top = -6.0
+margin_right = 36.0
+margin_bottom = 8.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+
 [connection signal="input_event" from="." to="." method="_on_Tile_input_event"]
