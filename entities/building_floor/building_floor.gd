@@ -1,7 +1,7 @@
 extends Area2D
 
+export(int) var level
 
-export(String) var level
 
 func _ready():
-	$Label.text = level
+	$Label.text = Globals.LEVELS[level]

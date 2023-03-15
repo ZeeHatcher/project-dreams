@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/failure_markers/markers.png" type="Texture" id=1]
+[ext_resource path="res://addons/segmented_progress/segmented_progress.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 36, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 36, 0, 36, 32 )
+
+[node name="FailureMarkers" type="Control"]
+margin_right = 3.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 3, 1 )
+script = ExtResource( 2 )
+filled = SubResource( 1 )
+empty = SubResource( 2 )
+max_value = 3
+value = 2

@@ -8,18 +8,48 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Label",
+"class": "Clock",
+"language": "GDScript",
+"path": "res://ui/clock/clock.gd"
+}, {
+"base": "Label",
+"class": "Counter",
+"language": "GDScript",
+"path": "res://ui/counter/counter.gd"
+}, {
+"base": "Node",
+"class": "Globals",
+"language": "GDScript",
+"path": "res://misc/globals.gd"
+} ]
+_global_script_class_icons={
+"Clock": "",
+"Counter": "",
+"Globals": ""
+}
+
 [application]
 
 config/name="Project Dreams"
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MapData="*res://misc/map_data.gd"
+
 [display]
 
-window/size/width=320
-window/size/height=240
+window/size/width=640
+window/size/height=360
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/segmented_progress/plugin.cfg" )
 
 [gui]
 

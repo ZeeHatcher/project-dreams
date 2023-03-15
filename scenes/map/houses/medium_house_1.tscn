@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/map/houses/res/building_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/houses/res/furniture_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/minigames/elevator_ride/elevator_ride.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/minigames/creepy_crawlies/creepy_crawlies.tscn" type="PackedScene" id=5]
 
 [node name="MediumHouse" type="Node2D"]
 
@@ -16,3 +19,12 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1, 0, 1, 4, 4, 65540, 8, 1, 1, 9, 0, 1, 65538, 4, 0, 65540, 5, 2, 65544, 4, 0, 196611, 4, 65537, 196613, 4, 1, 196614, 4, 65536, 196615, 4, 2, 196617, 2, 2 )
+
+[node name="Dreamer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 24, 20 )
+minigame_scene = ExtResource( 4 )
+
+[node name="Dreamer2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 152, 20 )
+minigame = 1
+minigame_scene = ExtResource( 5 )
