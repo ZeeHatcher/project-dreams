@@ -7,6 +7,7 @@ signal failed
 onready var _crawlies = $Crawlies.get_children()
 onready var _crawlies_left = _crawlies.size()
 onready var _timer = $Timer
+onready var _counter = $"%Counter"
 
 
 func _ready():
@@ -14,10 +15,13 @@ func _ready():
 		crawly.connect("found", self, "_on_Crawly_found")
 	
 	_timer.start()
+	_counter.max_value = _crawlies_left
+	_counter.value = 0
 
 
 func _on_Crawly_found():
 	_crawlies_left -= 1
+	_counter.value += 1
 	_check_win_condition()
 
 

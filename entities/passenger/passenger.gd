@@ -3,12 +3,10 @@ extends Area2D
 
 export(int) var speed = 150
 
-const LEVELS = ["G", "L1", "L2", "L3", "L4", "L5"]
-
 var _target_position
 var _moving = false
 
-onready var target_level = LEVELS[randi() % LEVELS.size()]
+onready var target_level = randi() % Globals.LEVELS.size()
 
 
 func _physics_process(delta):

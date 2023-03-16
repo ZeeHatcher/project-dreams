@@ -16,17 +16,20 @@ onready var _elevator = $Elevator
 onready var _spawn_point = $SpawnPoint
 onready var _wait_point = $WaitPoint
 onready var _target_level_label = $TargetLevel
+onready var _failure_markers = $"%FailureMarkers"
+onready var _total_levels = $Floors.get_child_count()
 
 
 func _ready():
 	_spawn_passenger()
+	_failure_markers.max_value = health
+	_failure_markers.value = 0
 	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and _elevator.passenger and _current_floor:
-		_check_level()
-		_exit_passenger()
-		_check_game_over()
+		_elevator.connect("stopped", self, "_on_Elevator_stopped_at_floor")
+		_elevator.go_to_level(_current_floor.level, _total_levels)
 
 
 func _on_Elevator_floor_reached(building_floor):
@@ -34,16 +37,30 @@ func _on_Elevator_floor_reached(building_floor):
 
 
 func _on_Passenger_tree_exited():
-	_spawn_passenger()
+	_check_game_over()
+	_elevator.connect("stopped", self, "_on_Elevator_stopped_at_entrance")
+	_elevator.go_to_level(0, _total_levels)
 
 
 func _on_ElevatorDoor_area_entered(passenger):
-	_target_level_label.text = passenger.target_level
+	_target_level_label.text = Globals.LEVELS[passenger.target_level]
 	_elevator.passenger = passenger
+	_elevator.start()
 
 
 func _on_ElevatorRide_end(success):
 	MapData.save_minigame_result(Globals.Minigames.ELEVATOR_RIDE, success)
+
+
+func _on_Elevator_stopped_at_floor():
+	_check_level()
+	_exit_passenger()
+	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_floor")
+
+
+func _on_Elevator_stopped_at_entrance():
+	_spawn_passenger()
+	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_entrance")
 
 
 func _spawn_passenger():
@@ -61,6 +78,7 @@ func _check_level():
 		_successes += 1
 	else:
 		health -= 1
+		_failure_markers.value += 1
 
 
 func _check_game_over():
