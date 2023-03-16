@@ -21,9 +21,10 @@ onready var _total_levels = $Floors.get_child_count()
 
 
 func _ready():
-	_spawn_passenger()
 	_failure_markers.max_value = health
 	_failure_markers.value = 0
+	
+	DreamTransition.connect("finished", self, "_on_DreamTransition_finished")
 	
 
 func _unhandled_input(event):
@@ -37,9 +38,11 @@ func _on_Elevator_floor_reached(building_floor):
 
 
 func _on_Passenger_tree_exited():
-	_check_game_over()
-	_elevator.connect("stopped", self, "_on_Elevator_stopped_at_entrance")
-	_elevator.go_to_level(0, _total_levels)
+	var is_game_over = _check_game_over()
+	
+	if not is_game_over:
+		_elevator.connect("stopped", self, "_on_Elevator_stopped_at_entrance")
+		_elevator.go_to_level(0, _total_levels)
 
 
 func _on_ElevatorDoor_area_entered(passenger):
@@ -49,6 +52,7 @@ func _on_ElevatorDoor_area_entered(passenger):
 
 
 func _on_ElevatorRide_end(success):
+	print(success)
 	MapData.save_minigame_result(Globals.Minigames.ELEVATOR_RIDE, success)
 
 
@@ -61,6 +65,10 @@ func _on_Elevator_stopped_at_floor():
 func _on_Elevator_stopped_at_entrance():
 	_spawn_passenger()
 	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_entrance")
+
+
+func _on_DreamTransition_finished():
+	_spawn_passenger()
 
 
 func _spawn_passenger():
@@ -84,8 +92,12 @@ func _check_level():
 func _check_game_over():
 	if _successes >= pass_requirement:
 		emit_signal("passed")
+		return true
 	elif health <= 0:
 		emit_signal("failed")
+		return true
+	
+	return false
 
 
 func _exit_passenger():

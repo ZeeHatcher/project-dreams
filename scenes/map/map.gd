@@ -15,7 +15,7 @@ func _ready():
 
 func _on_Dreamer_dream_entered(minigame):
 	MapData.player_position = _player.position
-	get_tree().change_scene_to(minigame)
+	DreamTransition.transition_to(minigame)
 
 
 func _on_Exit_body_entered(body):

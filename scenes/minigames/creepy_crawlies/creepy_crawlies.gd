@@ -14,9 +14,10 @@ func _ready():
 	for crawly in _crawlies:
 		crawly.connect("found", self, "_on_Crawly_found")
 	
-	_timer.start()
 	_counter.max_value = _crawlies_left
 	_counter.value = 0
+	
+	DreamTransition.connect("finished", self, "_on_DreamTransition_finished")
 
 
 func _on_Crawly_found():
@@ -30,7 +31,12 @@ func _on_Timer_timeout():
 
 
 func _on_CreepyCrawlies_end(success):
+	_timer.stop()
 	MapData.save_minigame_result(Globals.Minigames.CREEPY_CRAWLIES, success)
+
+
+func _on_DreamTransition_finished():
+	_timer.start()
 
 
 func _check_win_condition():
