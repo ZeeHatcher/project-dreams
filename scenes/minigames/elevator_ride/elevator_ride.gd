@@ -24,13 +24,12 @@ func _ready():
 	_failure_markers.max_value = health
 	_failure_markers.value = 0
 	
-	DreamTransition.connect("finished", self, "_on_DreamTransition_finished")
-	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and _elevator.passenger and _current_floor:
-		_elevator.connect("stopped", self, "_on_Elevator_stopped_at_floor")
-		_elevator.go_to_level(_current_floor.level, _total_levels)
+		if not _elevator.is_connected("stopped", self, "_on_Elevator_stopped_at_floor"):
+			_elevator.connect("stopped", self, "_on_Elevator_stopped_at_floor")
+			_elevator.go_to_level(_current_floor.level, _total_levels)
 
 
 func _on_Elevator_floor_reached(building_floor):
@@ -52,7 +51,6 @@ func _on_ElevatorDoor_area_entered(passenger):
 
 
 func _on_ElevatorRide_end(success):
-	print(success)
 	MapData.save_minigame_result(Globals.Minigames.ELEVATOR_RIDE, success)
 
 
@@ -67,7 +65,7 @@ func _on_Elevator_stopped_at_entrance():
 	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_entrance")
 
 
-func _on_DreamTransition_finished():
+func _on_Instructions_closed():
 	_spawn_passenger()
 
 
