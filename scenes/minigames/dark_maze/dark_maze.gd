@@ -31,7 +31,9 @@ func _ready():
 	$Player.z_index = 30
 	
 	# warning-ignore:return_value_discarded
-	$Enemy.connect("body_entered", self, "_lose_game")
+	$Enemy.connect("body_entered", self, "_finish_game", [false])
+	# warning-ignore:return_value_discarded
+	$Goal.connect("body_entered", self, "_finish_game", [true])
 	
 	# The higher this number, the more sluggish he reacts
 	# Currently set to 1.0 seconds
@@ -49,9 +51,10 @@ func _process(_delta):
 		$Player.z_index = 10
 
 
-func _lose_game(_node : Node):
-	print("ah poop")
-#	MapData.save_minigame_result(Globals.Minigames.DARK_MAZE, false)
+func _finish_game(node : Node, success : bool):
+	if node == $Player:
+		print("win = " + str(success))
+		MapData.save_minigame_result(Globals.Minigames.DARK_MAZE, success)
 
 
 func _check_neighbors(cell, unvisited):
@@ -82,6 +85,26 @@ func _make_maze():
 	var current = Vector2.ZERO
 	unvisited.erase(current)
 	
+	var exit_coord := Vector2.ZERO
+	
+	if randi() % 2:
+		if randi() % 2:
+			exit_coord.x = -1
+		else:
+			exit_coord.x = maze_width
+		
+		exit_coord.y = randi() % maze_height
+	else:
+		if randi() % 2:
+			exit_coord.y = -1
+		else:
+			exit_coord.y = maze_height
+		
+		exit_coord.x = randi() % maze_width
+	
+	unvisited.append(exit_coord)
+	maze[exit_coord] = W|S|E|N
+	
 	while(unvisited):
 		var neighbors = _check_neighbors(current, unvisited)
 		if neighbors.size() > 0:
@@ -96,3 +119,34 @@ func _make_maze():
 			unvisited.erase(current)
 		elif stack:
 			current = stack.pop_back()
+	
+	for x in maze_width:
+		for y in maze_height:
+			var template : TileMap = get_node(
+				"Cells/" + str(maze[Vector2(x, y)])
+			)
+			
+			var cell_rect := template.get_used_rect()
+			
+			for i in cell_rect.size.x:
+				for j in cell_rect.size.y:
+					$TileMap.set_cell(
+						cell_rect.size.x * x + i,
+						cell_rect.size.y * y + j,
+						template.get_cell(i, j)
+					)
+	
+	$Goal.position = Vector2(
+		exit_coord.x * 32 * 12 + 192,
+		exit_coord.y * 32 * 12 + 192
+	)
+	
+	$Enemy.position = Vector2(
+		maze_width / 2 * 32 * 12 + 192,
+		maze_height / 2 * 32 * 12 + 192
+	)
+	
+	$Player.position = Vector2(
+		(randi() % maze_width) * 32 * 12 + 192,
+		(randi() % maze_height) * 32 * 12 + 192
+	)
