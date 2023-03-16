@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sky_traffic.png" type="Texture" id=1]
+[ext_resource path="res://entities/sky_traffic/apollo.gd" type="Script" id=2]
+
+[node name="Apollo" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Chariot" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 10
+
+[node name="Reign" type="Sprite" parent="Chariot"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 14
+
+[node name="Horse0" type="Sprite" parent="."]
+position = Vector2( -640, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Reign" type="Sprite" parent="Horse0"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="Horses" type="Node2D" parent="."]
+
+[node name="Horse1" type="Sprite" parent="Horses"]
+position = Vector2( -128, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Reign" type="Sprite" parent="Horses/Horse1"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="Horse2" type="Sprite" parent="Horses"]
+position = Vector2( -256, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Reign" type="Sprite" parent="Horses/Horse2"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="Horse3" type="Sprite" parent="Horses"]
+position = Vector2( -384, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Reign" type="Sprite" parent="Horses/Horse3"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 13
+
+[node name="Horse4" type="Sprite" parent="Horses"]
+position = Vector2( -512, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 8
+
+[node name="Reign" type="Sprite" parent="Horses/Horse4"]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+frame = 13
