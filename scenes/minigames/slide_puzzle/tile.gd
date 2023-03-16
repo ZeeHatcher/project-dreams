@@ -16,7 +16,7 @@ onready var move_up: Tween = $"%move_up"
 
 
 func _ready():
-	label.text = str(number)
+	label.text = str(number + 1)
 	
 	
 

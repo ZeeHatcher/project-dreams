@@ -1,11 +1,12 @@
 extends Node2D
 
 
-export var grid_size_x: int = 10
-export var grid_size_y: int = 5
-export var tile_margin: int = 1
+export var grid_size_x: int = 4
+export var grid_size_y: int = 4
+export var tile_margin: int = 2
+export var bombs: int = 3
 
-
+var turns: int = 0
 
 var tile_scene: PackedScene = preload("res://scenes/minigames/slide_puzzle/tile.tscn")
 var tiles: Array # sorted 0 - grid_size_x * grid_size_y
@@ -13,21 +14,20 @@ var board: Array # [column][row] -> tile
 
 var width: float
 var height: float
-
+var board_solved: bool = false
+var animating: bool = false
 
 onready var puzzle_image = $"%PuzzleImage"
 onready var grid_offset = puzzle_image.position
+onready var timer = $"%Timer"
+
 
 func _ready():
+	# get size of one tile with current settings
 	width = puzzle_image.texture.get_width() / grid_size_x * puzzle_image.scale.x
 	height = puzzle_image.texture.get_height() / grid_size_y * puzzle_image.scale.y
-
-	puzzle_image.visible = false
-	print(grid_offset)
 	
-	create_tiles()
-	shuffle_board()
-	update_board()
+	puzzle_image.visible = false
 
 
 func create_tiles():
@@ -68,12 +68,11 @@ func shuffle_board():
 			column.append(tile)
 			
 		board.append(column)
-
 	
-	# delete last tile
-	board[grid_size_x - 1][grid_size_y - 1].grid_position = Vector2(999,999)
-	board[grid_size_x - 1][grid_size_y - 1] = null
-
+	# delete last tile?
+	# could force the use of bombs as a tu
+	#board[grid_size_x - 1][grid_size_y - 1].grid_position = Vector2(999,999)
+	#board[grid_size_x - 1][grid_size_y - 1] = null
 
 
 func update_board():
@@ -88,19 +87,47 @@ func get_position_from_grid(grid_position: Vector2) -> Vector2:
 				(grid_position.y * height) + (tile_margin * grid_position.y) + grid_offset.y
 			)
 
+
 func on_tile_clicked(number, grid_position):
+	if animating:
+		return
+	
+	if board_solved:
+		end_animation()
+		return
+	
 	move_tile(number, grid_position)
 	
 	if is_board_solved():
-		print("hurray")
+		board_solved = true
+		print("slide puzzle solved")
 		solve_board()
 		update_board()
 
 
 func on_tile_rightclicked(number, grid_position):
+	if animating:
+		return
+	
+	if board_solved:
+		end_animation()
+		return
+	
+	if bombs <= 0:
+		print("no bombs left")
+		return
+	
+	bombs -= 1
+	turns += 1
 	var tile = board[grid_position.x][grid_position.y]
 	tile.grid_position = Vector2(999, 999)
 	board[grid_position.x][grid_position.y] = null
+	
+	if is_board_solved():
+		board_solved = true
+		print("slide puzzle solved")
+		solve_board()
+	
 	update_board()
 
 
@@ -144,6 +171,7 @@ func move_tile(number: int, grid_position: Vector2):
 		return
 	
 	# move
+	turns += 1
 	match direction:
 		Vector2.UP:
 			# move up
@@ -174,23 +202,26 @@ func move_tile(number: int, grid_position: Vector2):
 			animate_move(tile)
 
 
-
-
-
 func animate_move(tile):
+	animating = true
 	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.connect("finished", self, "_on_animation_finished")
 	tween.tween_property(tile, "position", get_position_from_grid(tile.grid_position), 0.5)
 
 
 func animate_shake(tile):
+	animating = true
 	var tween = create_tween()
-	tween.tween_property(tile, "rotation", tile.rotation + 0.02, 0.05)
-	tween.tween_property(tile, "rotation", tile.rotation - 0.02, 0.05)
+	tween.connect("finished", self, "_on_animation_finished")
 	tween.tween_property(tile, "rotation", tile.rotation + 0.02, 0.05)
 	tween.tween_property(tile, "rotation", tile.rotation - 0.02, 0.05)
 	tween.tween_property(tile, "rotation", tile.rotation + 0.02, 0.05)
 	tween.tween_property(tile, "rotation", tile.rotation - 0.02, 0.05)
 	tween.tween_property(tile, "rotation", tile.rotation, 0.1)
+
+
+func _on_animation_finished():
+	animating = false
 
 
 func is_board_solved() -> bool:
@@ -214,7 +245,24 @@ func solve_board():
 	for y in range(grid_size_y):
 		for x in range(grid_size_x):
 			var tile = tiles[count]
-			tile.grid_offset = Vector2(x, y)
+			tile.grid_position = Vector2(x, y)
 			board[x][y] = tile
 			
 			count += 1
+
+
+func end_animation():
+	puzzle_image.visible = true
+	
+	for i in range(tiles.size()):
+		tiles[i].queue_free()
+	
+	# play sound?
+	# animation?
+	
+	timer.start()
+
+
+func _on_Timer_timeout():
+	get_parent().game_won(turns)
+	
