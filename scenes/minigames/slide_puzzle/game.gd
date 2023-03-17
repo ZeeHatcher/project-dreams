@@ -4,10 +4,6 @@ extends Node2D
 onready var board = $"%Board"
 
 
-func _ready():
-	start_game()
-
-
 func start_game():
 	board.create_tiles()
 	board.shuffle_board()
@@ -15,5 +11,8 @@ func start_game():
 
 
 func game_won(required_turns):
-	pass
-	# scene transition
+	MapData.save_minigame_result(Globals.Minigames.SLIDE_PUZZLE, 1)
+
+
+func _on_Instructions_closed():
+	start_game()
