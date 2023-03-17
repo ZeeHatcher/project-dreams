@@ -47,4 +47,4 @@ func _unhandled_input(event):
 
 
 func _on_Cutscene_end():
-	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	get_tree().change_scene("res://scenes/credits/credits.tscn")
