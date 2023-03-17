@@ -10,3 +10,5 @@ data_*/
 
 # MacOs-specific ignores
 **/*.DS_Store
+
+bin/

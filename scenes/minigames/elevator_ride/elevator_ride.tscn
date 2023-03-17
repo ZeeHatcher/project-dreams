@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/minigames/elevator_ride/elevator_ride.gd" type="Script" id=1]
 [ext_resource path="res://entities/elevator/elevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/building_floor/building_floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/failure_markers/failure_markers.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 0, -12 )
@@ -87,7 +88,12 @@ rect_min_size = Vector2( 108, 32 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 5 )]
+title = "Elevator Ride"
+description = "Press SPACEBAR at the right time to stop the elevator at the right floor."
+
 [connection signal="failed" from="." to="." method="_on_ElevatorRide_end" binds= [ -1 ]]
 [connection signal="passed" from="." to="." method="_on_ElevatorRide_end" binds= [ 1 ]]
 [connection signal="floor_reached" from="Elevator" to="." method="_on_Elevator_floor_reached"]
 [connection signal="area_entered" from="ElevatorDoor" to="." method="_on_ElevatorDoor_area_entered"]
+[connection signal="closed" from="CanvasLayer/Instructions" to="." method="_on_Instructions_closed"]

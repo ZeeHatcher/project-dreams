@@ -21,15 +21,15 @@ onready var _total_levels = $Floors.get_child_count()
 
 
 func _ready():
-	_spawn_passenger()
 	_failure_markers.max_value = health
 	_failure_markers.value = 0
 	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and _elevator.passenger and _current_floor:
-		_elevator.connect("stopped", self, "_on_Elevator_stopped_at_floor")
-		_elevator.go_to_level(_current_floor.level, _total_levels)
+		if not _elevator.is_connected("stopped", self, "_on_Elevator_stopped_at_floor"):
+			_elevator.connect("stopped", self, "_on_Elevator_stopped_at_floor")
+			_elevator.go_to_level(_current_floor.level, _total_levels)
 
 
 func _on_Elevator_floor_reached(building_floor):
@@ -37,9 +37,11 @@ func _on_Elevator_floor_reached(building_floor):
 
 
 func _on_Passenger_tree_exited():
-	_check_game_over()
-	_elevator.connect("stopped", self, "_on_Elevator_stopped_at_entrance")
-	_elevator.go_to_level(0, _total_levels)
+	var is_game_over = _check_game_over()
+	
+	if not is_game_over:
+		_elevator.connect("stopped", self, "_on_Elevator_stopped_at_entrance")
+		_elevator.go_to_level(0, _total_levels)
 
 
 func _on_ElevatorDoor_area_entered(passenger):
@@ -63,6 +65,10 @@ func _on_Elevator_stopped_at_entrance():
 	_elevator.disconnect("stopped", self, "_on_Elevator_stopped_at_entrance")
 
 
+func _on_Instructions_closed():
+	_spawn_passenger()
+
+
 func _spawn_passenger():
 	var passenger = PassengerScene.instance()
 	passenger.position = _spawn_point.position
@@ -84,8 +90,12 @@ func _check_level():
 func _check_game_over():
 	if _successes >= pass_requirement:
 		emit_signal("passed")
+		return true
 	elif health <= 0:
 		emit_signal("failed")
+		return true
+	
+	return false
 
 
 func _exit_passenger():
