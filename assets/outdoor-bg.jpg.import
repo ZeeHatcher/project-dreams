@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puzzle.png-fb3b010f9d127eb0cdeb773f5648e917.stex"
+path="res://.import/outdoor-bg.jpg-ef33eac39df674f78a6ac20ae9b6ea10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/minigames/slide_puzzle/assets/puzzle.png"
-dest_files=[ "res://.import/puzzle.png-fb3b010f9d127eb0cdeb773f5648e917.stex" ]
+source_file="res://assets/outdoor-bg.jpg"
+dest_files=[ "res://.import/outdoor-bg.jpg-ef33eac39df674f78a6ac20ae9b6ea10.stex" ]
 
 [params]
 
