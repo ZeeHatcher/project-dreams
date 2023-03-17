@@ -12,6 +12,8 @@ b = Vector2( 0, 12 )
 
 [node name="ElevatorRide" type="Node2D"]
 script = ExtResource( 1 )
+pass_requirement = 1
+health = 1
 
 [node name="Road" type="Polygon2D" parent="."]
 position = Vector2( 272, 272 )

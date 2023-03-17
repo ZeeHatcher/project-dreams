@@ -8,4 +8,7 @@ export_presets.cfg
 .mono/
 data_*/
 
+# MacOs-specific ignores
+**/*.DS_Store
+
 bin/
