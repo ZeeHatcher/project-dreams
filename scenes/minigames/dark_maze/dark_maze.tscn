@@ -18,14 +18,16 @@ tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 149, 146 )
-speed = 384
+[node name="YSort" type="YSort" parent="."]
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
+[node name="Enemy" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 560, -120 )
 path_to_player = NodePath("../Player")
 speed = 128
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 149, 146 )
+speed = 384
 
 [node name="Cells" type="Node2D" parent="."]
 visible = false

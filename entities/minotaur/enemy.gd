@@ -42,9 +42,7 @@ func _physics_process(delta):
 		if mov.y > 0: $Minotaur/AnimationPlayer.play("run_down")
 		elif mov.y < 0: $Minotaur/AnimationPlayer.play("run_up")
 	
-	_velocity = Vector2(mov)
-	
-	position += _velocity * delta
+	position += mov * delta
 
 
 func _update_pathfinding():

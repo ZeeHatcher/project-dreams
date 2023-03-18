@@ -25,13 +25,13 @@ var cell_walls = {
 export var maze_width := 10
 export var maze_height := 10
 
+onready var _enemy = $YSort/Enemy
+onready var _player = $YSort/Player
+
 
 func _ready():
-	$Enemy.z_index = 20
-	$Player.z_index = 30
-	
 	# warning-ignore:return_value_discarded
-	$Enemy.connect("body_entered", self, "_finish_game", [false])
+	_enemy.connect("body_entered", self, "_finish_game", [false])
 	# warning-ignore:return_value_discarded
 	$Goal.connect("body_entered", self, "_finish_game", [true])
 	
@@ -44,15 +44,8 @@ func _ready():
 	set_process(true)
 
 
-func _process(_delta):
-	if $Player.position.y > $Enemy.position.y:
-		$Player.z_index = 30
-	elif $Player.position.y < $Enemy.position.y:
-		$Player.z_index = 10
-
-
 func _finish_game(node : Node, success : bool):
-	if node == $Player:
+	if node == _player:
 		print("win = " + str(success))
 		MapData.save_minigame_result(Globals.Minigames.DARK_MAZE, success)
 
@@ -141,12 +134,12 @@ func _make_maze():
 		exit_coord.y * 32 * 12 + 192
 	)
 	
-	$Enemy.position = Vector2(
+	_enemy.position = Vector2(
 		maze_width / 2 * 32 * 12 + 192,
 		maze_height / 2 * 32 * 12 + 192
 	)
 	
-	$Player.position = Vector2(
+	_player.position = Vector2(
 		(randi() % maze_width) * 32 * 12 + 192,
 		(randi() % maze_height) * 32 * 12 + 192
 	)
