@@ -8,10 +8,10 @@ var _current
 
 func _physics_process(delta):
 	if _prev:
-		_prev.unit_offset = lerp(_prev.unit_offset, 1, 0.05)
+		_prev.unit_offset = lerp(_prev.unit_offset, 1, 0.1)
 	
 	if _current:
-		_current.unit_offset = lerp(_current.unit_offset, 0.5, 0.05)
+		_current.unit_offset = lerp(_current.unit_offset, 0.5, 0.1)
 
 
 func next():

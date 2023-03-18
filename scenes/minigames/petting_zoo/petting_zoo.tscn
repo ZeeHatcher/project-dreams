@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.gd" type="Script" id=1]
-[ext_resource path="res://entities/pets/slime/slime.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/pets/lion/lion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/minigames/petting_zoo/conveyor.gd" type="Script" id=3]
 [ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/pets/goat/goat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/pets/owl/owl.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/minigames/petting_zoo/outdoor-bg.jpg" type="Texture" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -12,7 +15,11 @@ _data = {
 
 [node name="PettingZoo" type="Node2D"]
 script = ExtResource( 1 )
-pets = [ ExtResource( 2 ), ExtResource( 2 ) ]
+pets = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ) ]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+centered = false
 
 [node name="Conveyor" type="Path2D" parent="."]
 position = Vector2( 320, 180 )

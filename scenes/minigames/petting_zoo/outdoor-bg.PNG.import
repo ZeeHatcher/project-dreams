@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/outdoor-bg.PNG-80b69953854dc0e0162d8edb504055ec.stex"
+path="res://.import/outdoor-bg.PNG-3c066867264461e60828a2a714464605.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/outdoor-bg.PNG"
-dest_files=[ "res://.import/outdoor-bg.PNG-80b69953854dc0e0162d8edb504055ec.stex" ]
+source_file="res://scenes/minigames/petting_zoo/outdoor-bg.PNG"
+dest_files=[ "res://.import/outdoor-bg.PNG-3c066867264461e60828a2a714464605.stex" ]
 
 [params]
 
