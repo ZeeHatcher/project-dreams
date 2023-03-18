@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/daedelus/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/minotaur/enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/minigames/dark_maze/dark_maze.gd" type="Script" id=3]
 [ext_resource path="res://scenes/minigames/dark_maze/maze_tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/clock/clock.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192, 192 )
@@ -183,3 +185,43 @@ shape = SubResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 48.0
+margin_bottom = 34.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Clock" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_right = 28.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0:00"
+script = ExtResource( 7 )
+timer_path = NodePath("../../../../Timer")
+
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 6 )]
+pause_mode = 2
+title = "Dark Maze"
+description = "This is a description."
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="closed" from="CanvasLayer/Instructions" to="." method="_on_Instructions_closed"]

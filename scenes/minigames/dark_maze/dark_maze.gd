@@ -31,9 +31,9 @@ onready var _player = $YSort/Player
 
 func _ready():
 	# warning-ignore:return_value_discarded
-	_enemy.connect("body_entered", self, "_finish_game", [false])
+	_enemy.connect("body_entered", self, "_finish_game", [-1])
 	# warning-ignore:return_value_discarded
-	$Goal.connect("body_entered", self, "_finish_game", [true])
+	$Goal.connect("body_entered", self, "_finish_game", [1])
 	
 	# The higher this number, the more sluggish he reacts
 	# Currently set to 1.0 seconds
@@ -42,9 +42,10 @@ func _ready():
 	_make_maze()
 	$TileMap.bake_navigation = true
 	set_process(true)
+	get_tree().paused = true
 
 
-func _finish_game(node : Node, success : bool):
+func _finish_game(node : Node, success: int):
 	if node == _player:
 		print("win = " + str(success))
 		MapData.save_minigame_result(Globals.Minigames.DARK_MAZE, success)
@@ -143,3 +144,11 @@ func _make_maze():
 		(randi() % maze_width) * 32 * 12 + 192,
 		(randi() % maze_height) * 32 * 12 + 192
 	)
+
+
+func _on_Timer_timeout():
+	MapData.save_minigame_result(Globals.Minigames.DARK_MAZE, -1)
+
+
+func _on_Instructions_closed():
+	get_tree().paused = false
