@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/minigames/constellation/assets/dark_sky.png" type="Texture" id=1]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 0.212342, 0.201342 )
+texture = ExtResource( 1 )
+centered = false
