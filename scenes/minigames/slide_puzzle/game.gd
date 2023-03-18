@@ -5,6 +5,7 @@ onready var board = $"%Board"
 
 
 func start_game():
+	board.start_timer()
 	board.create_tiles()
 	board.shuffle_board()
 	board.update_board()
