@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Globals",
 "language": "GDScript",
 "path": "res://misc/globals.gd"
+}, {
+"base": "Area2D",
+"class": "PettingSpot",
+"language": "GDScript",
+"path": "res://entities/pets/petting_spot.gd"
 } ]
 _global_script_class_icons={
 "Clock": "",
 "Counter": "",
-"Globals": ""
+"Globals": "",
+"PettingSpot": ""
 }
 
 [application]

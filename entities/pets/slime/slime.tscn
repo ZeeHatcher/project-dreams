@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/pets/slime/slime.png" type="Texture" id=1]
+[ext_resource path="res://entities/pets/petting_spot.gd" type="Script" id=2]
+[ext_resource path="res://entities/pets/pet.gd" type="Script" id=3]
+[ext_resource path="res://entities/pets/slime/slime_happy.png" type="Texture" id=4]
+[ext_resource path="res://entities/pets/slime/slime_angry.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 68, 18 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 120, 24 )
+
+[node name="Slime" type="Sprite"]
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+happy_texture = ExtResource( 4 )
+angry_texture = ExtResource( 5 )
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="PettingSpot" type="Area2D" parent="Spots"]
+position = Vector2( 0, -44 )
+script = ExtResource( 2 )
+enjoyment = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot"]
+shape = SubResource( 1 )
+
+[node name="PettingSpot2" type="Area2D" parent="Spots"]
+position = Vector2( 0, 33 )
+script = ExtResource( 2 )
+enjoyment = -0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot2"]
+shape = SubResource( 2 )
+
+[node name="TextureResetTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TextureResetTimer" to="." method="_on_TextureResetTimer_timeout"]
