@@ -39,12 +39,12 @@ margin_bottom = 20.0
 text = "Play"
 flat = true
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 99.0
 margin_bottom = 44.0
-text = "Quit"
+text = "Credits"
 flat = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

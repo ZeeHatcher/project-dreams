@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://entities/pets/pet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/pets/owl/owl.PNG" type="Texture" id=2]
+[ext_resource path="res://entities/pets/petting_spot.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 132, 262 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 264, 0, 132, 262 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 396, 0, 132, 262 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 23.0217
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 21 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 9, 22 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 7.07107
+
+[node name="Owl" instance=ExtResource( 1 )]
+texture = SubResource( 1 )
+happy_texture = SubResource( 2 )
+angry_texture = SubResource( 3 )
+
+[node name="PettingSpot" type="Area2D" parent="Spots" index="0"]
+position = Vector2( 9, -96 )
+script = ExtResource( 3 )
+enjoyment = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot" index="0"]
+shape = SubResource( 4 )
+
+[node name="PettingSpot2" type="Area2D" parent="Spots" index="1"]
+position = Vector2( 17, -51 )
+script = ExtResource( 3 )
+enjoyment = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot2" index="0"]
+shape = SubResource( 5 )
+
+[node name="PettingSpot3" type="Area2D" parent="Spots" index="2"]
+position = Vector2( -15, -54 )
+script = ExtResource( 3 )
+enjoyment = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot3" index="0"]
+shape = SubResource( 6 )
+
+[node name="PettingSpot4" type="Area2D" parent="Spots" index="3"]
+position = Vector2( 0, -21 )
+script = ExtResource( 3 )
+enjoyment = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot4" index="0"]
+shape = SubResource( 7 )
+
+[node name="PettingSpot5" type="Area2D" parent="Spots" index="4"]
+position = Vector2( 26, -22 )
+script = ExtResource( 3 )
+enjoyment = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot5" index="0"]
+shape = SubResource( 7 )
