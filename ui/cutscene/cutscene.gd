@@ -1,35 +1,60 @@
-extends VBoxContainer
+extends Control
 
 
-signal end
+signal end()
 
-var content = [] setget set_content
+export(Array, String, MULTILINE) var content
 
-var _page = 0
+var _index = -1
 
-onready var _image = $Image
-onready var _description = $PanelContainer/Description
+onready var _label = $CenterContainer/Label
+onready var _animation_player = $AnimationPlayer
+onready var _audio_player = $AudioStreamPlayer
+onready var _timer = $Timer
 
 
-func next_page():
-	_page += 1
-		
-	if _page < content.size():
-		_show_page(_page)
-	else:
+func _ready():
+	_audio_player.play()
+	var tween = create_tween()
+	_audio_player.volume_db = -80
+	tween.tween_property(_audio_player, "volume_db", -24, 1)
+	_next()
+
+
+func _input(event):
+	var is_mouse_click = (
+			event is InputEventMouseButton
+			and event.button_index == BUTTON_LEFT
+			and event.pressed
+	)
+	
+	if event.is_action_pressed("interact") or is_mouse_click:
+		_timer.stop()
+		_next()
+	
+	get_tree().set_input_as_handled()
+
+
+func _next():
+	_animation_player.play("fade_out")
+	_index += 1
+	
+	if _index >= content.size():
+		var tween = create_tween()
+		tween.tween_property(_audio_player, "volume_db", -80, 2)
+	
+	yield(_animation_player, "animation_finished")
+	_label.text = ""
+	
+	if _index >= content.size():
 		emit_signal("end")
-
-
-func set_content(val):
-	content = val
-	_page = 0
-	_show_page(0)
-
-
-func _show_page(page):
-	if page >= content.size():
 		return
 	
-	var cont = content[page]
-	_image.texture = load(cont["image"])
-	_description.text = cont["text"]
+	_label.text = content[_index]
+	_animation_player.play("fade_in")
+	yield(_animation_player, "animation_finished")
+	_timer.start()
+
+
+func _on_Timer_timeout():
+	_next()
