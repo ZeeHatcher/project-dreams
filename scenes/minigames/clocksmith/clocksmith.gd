@@ -10,12 +10,15 @@ onready var _layers = $Layers.get_children()
 onready var _total_layers = _layers.size()
 onready var _layer_buttons = $CanvasLayer/LayerButtons
 onready var _label = $"%Label"
+onready var _markers = $"%FailureMarkers"
 
 
 func _ready():
 	_show_layer(0)
 	
 	get_tree().paused = true
+	_markers.max_value = tries
+	_markers.value = 0
 
 
 func _show_layer(idx):
@@ -81,6 +84,7 @@ func _on_EndLine_area_entered(area):
 		MapData.save_minigame_result(Globals.Minigames.CLOCKSMITH, 1)
 	else:
 		tries -= 1
+		_markers.value += 1
 		
 		if tries == 0:
 			MapData.save_minigame_result(Globals.Minigames.CLOCKSMITH, -1)
