@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/theme_3.ogg-b9843735660851522372bc5c63747bb2.oggstr"
+
+[deps]
+
+source_file="res://scenes/minigames/constellation/assets/theme_3.ogg"
+dest_files=[ "res://.import/theme_3.ogg-b9843735660851522372bc5c63747bb2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

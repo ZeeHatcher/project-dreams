@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/segmented_progress/segmented_progress.gd" type="Script" id=1]
+[ext_resource path="res://scenes/minigames/constellation/assets/dottet_line.png" type="Texture" id=2]
+[ext_resource path="res://scenes/minigames/constellation/star_path_segment.gd" type="Script" id=3]
+
+[node name="StarPathSegment" type="Node2D"]
+script = ExtResource( 3 )
+filled_percent = 0.0
+
+[node name="SegmentedProgress" type="Control" parent="."]
+unique_name_in_owner = true
+margin_right = 100.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 100, 6 )
+script = ExtResource( 1 )
+filled = ExtResource( 2 )
+empty = ExtResource( 2 )
+empty_tint = Color( 0.356863, 0.356863, 0.356863, 1 )
+max_value = 10
