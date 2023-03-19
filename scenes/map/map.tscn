@@ -18,7 +18,7 @@
 [ext_resource path="res://scenes/map/assets/night-ambience-17064.mp3" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 69 )
+extents = Vector2( 7, 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "RESET"
@@ -138,12 +138,16 @@ format = 1
 tile_data = PoolIntArray( 65542, 7, 0, 65551, 7, 0, 131073, 7, 0, 196608, 11, 1, 196616, 7, 0, 262144, 11, 2, 262145, 11, 5, 262151, 11, 0, 327680, 7, 0, 327681, 11, 2, 327687, 11, 65538, 327688, 10, 196614, 327691, 3, 65536, 327694, 10, 131078, 327700, 11, 65539, 393221, 3, 0, 393223, 3, 65537, 393224, 3, 196610, 393225, 3, 196610, 393226, 3, 196610, 393227, 3, 196610, 393228, 3, 196610, 393229, 3, 196610, 393230, 7, 0, 393231, 3, 196610, 393232, 3, 196610, 393233, 3, 196610, 393234, 3, 196610, 393235, 3, 196610, 393236, 3, 196611, 458752, 3, 196609, 458753, 3, 196610, 458754, 3, 196610, 458755, 3, 196610, 458756, 3, 196610, 458757, 3, 196610, 458758, 3, 196610, 458759, 3, 131074, 458763, 3, 131072, 458764, 10, 131079, 458768, 3, 65536, 458770, 10, 196615, 524289, 11, 1, 524290, 11, 1, 524307, 7, 0, 589824, 11, 2, 589825, 10, 196615, 589826, 11, 2, 655361, 11, 2, 655362, 7, 0, 720899, 10, 131078, 720902, 7, 0, 720909, 7, 0, 917521, 10, 262151, 983042, 10, 262149, 983055, 10, 262152, 1048580, 10, 262151, 1048592, 10, 262150 )
 
 [node name="Exit" type="Area2D" parent="."]
-position = Vector2( 10, 344 )
+visible = false
+position = Vector2( 7, 117 )
 collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Exit"]
+polygon = PoolVector2Array( -7, -10, 7, -10, 7, 10, -7, 10 )
 
 [node name="Dreamers" type="Node2D" parent="."]
 __meta__ = {
@@ -186,13 +190,13 @@ minigame = 6
 minigame_scene = ExtResource( 19 )
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
-position = Vector2( 167, 115 )
+position = Vector2( 6, 118 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 167, 115 )
+position = Vector2( 6, 118 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = -8
@@ -211,5 +215,28 @@ anims/out = SubResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.12549, 0.133333, 0.258824, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ExitText" type="Label" parent="CanvasLayer/MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = -6.0
+margin_right = 630.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+text = "All dreams have been completed.
+You may proceed to the left to exit."
+align = 1
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]

@@ -18,6 +18,10 @@ func _ready():
 		dreamer.connect("dream_entered", self, "_on_Dreamer_dream_entered")
 	
 	_animation_player.play("in")
+	
+	if _can_end():
+		$Exit.visible = true
+		$CanvasLayer/MarginContainer/ExitText.visible = true
 
 
 func _on_Dreamer_dream_entered(minigame):
