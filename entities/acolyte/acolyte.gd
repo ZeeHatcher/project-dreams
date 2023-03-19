@@ -9,11 +9,18 @@ var _velocity = Vector2()
 var _target
 
 onready var _interact_area = $InteractArea
+onready var _sprite = $AnimatedSprite
+onready var _particles = $Particles2D
 
+
+func _process(delta):
+	if _dir.x != 0:
+		_sprite.flip_h = _dir.x < 0
 
 func _physics_process(delta):
 	_get_movement_input()
 	_move()
+	_animate()
 
 
 func _unhandled_input(event):
@@ -42,6 +49,16 @@ func _move():
 	_velocity = _velocity.linear_interpolate(target__velocity, acceleration_weight)
 	_velocity = move_and_slide(_velocity)
 
+
+func _animate():
+	if _dir != Vector2.ZERO:
+		_sprite.play()
+		_particles.emitting = true
+	elif _sprite.playing:
+		_sprite.frame = 0
+		_sprite.stop()
+		_particles.emitting = false
+		
 
 func _on_InteractArea_body_entered(body):
 	if (body.has_method("highlight")):

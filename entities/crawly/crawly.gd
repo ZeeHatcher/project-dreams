@@ -12,5 +12,10 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	
 	if event.button_index == BUTTON_LEFT and event.pressed:
 		_found = true
-		$Sprite.modulate = Color.red
+		$AudioStreamPlayer2D.play()
+		$AnimationPlayer.play("fade_out")
 		emit_signal("found")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue_free()

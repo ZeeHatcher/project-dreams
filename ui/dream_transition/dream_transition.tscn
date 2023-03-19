@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/dream_transition/dream_transition.gd" type="Script" id=1]
 [ext_resource path="res://ui/dream_transition/transition-clouds.PNG" type="Texture" id=2]
+[ext_resource path="res://ui/dream_transition/hurricane-140908.mp3" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=3]
 resource_name = "RESET"
@@ -29,6 +30,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 360 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -32.0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "in"
@@ -52,14 +65,27 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.8, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 360 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 360 ), Vector2( 0, -300 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 0.8, 1 ),
+"update": 0,
+"values": [ -64.0, -42.0 ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "out"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/White:color")
 tracks/0/interp = 1
@@ -67,7 +93,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 1, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -79,10 +105,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.25, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -360 ) ]
+"values": [ Vector2( 0, -300 ), Vector2( 0, -990 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1.25, 1 ),
+"update": 0,
+"values": [ -40.0, -64.0 ]
 }
 
 [node name="Transition" type="CanvasLayer"]
@@ -104,8 +142,12 @@ color = Color( 1, 1, 1, 0 )
 [node name="TextureRect" type="TextureRect" parent="Control"]
 margin_top = 360.0
 margin_right = 640.0
-margin_bottom = 720.0
+margin_bottom = 1243.0
 texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -32.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

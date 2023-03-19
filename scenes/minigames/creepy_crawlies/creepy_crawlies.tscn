@@ -1,87 +1,268 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/minigames/creepy_crawlies/placeholder.png" type="Texture" id=1]
+[ext_resource path="res://scenes/minigames/creepy_crawlies/bg.png" type="Texture" id=1]
 [ext_resource path="res://scenes/minigames/creepy_crawlies/creepy_crawlies.gd" type="Script" id=2]
 [ext_resource path="res://entities/crawly/crawly.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/clock/clock.gd" type="Script" id=4]
-[ext_resource path="res://ui/counter/counter.gd" type="Script" id=5]
+[ext_resource path="res://entities/crawly/crawly.png" type="Texture" id=5]
 [ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/White:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "snapshot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/White:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/White:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.95, 0.95 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/MarginContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="CreepyCrawlies" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Image" type="Sprite" parent="."]
-position = Vector2( 317, 177 )
-scale = Vector2( 0.605178, 0.605178 )
+[node name="Back" type="Sprite" parent="."]
+modulate = Color( 0.505882, 0.505882, 0.505882, 1 )
+position = Vector2( 320, 180 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Image" type="Sprite" parent="."]
+position = Vector2( 320, 180 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Crawlies" type="Node2D" parent="."]
 position = Vector2( 157, 56 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Crawly" parent="Crawlies" instance=ExtResource( 3 )]
-position = Vector2( 212, 93 )
+position = Vector2( 161, 202 )
 rotation = -1.45434
 
 [node name="Crawly2" parent="Crawlies" instance=ExtResource( 3 )]
-position = Vector2( 148, 151 )
+position = Vector2( 15, 83 )
 rotation = 0.909509
 
 [node name="Crawly3" parent="Crawlies" instance=ExtResource( 3 )]
-position = Vector2( 86, 91 )
+position = Vector2( -74, 165 )
 rotation = -0.845942
 
 [node name="Crawly4" parent="Crawlies" instance=ExtResource( 3 )]
-position = Vector2( 96, 167 )
+position = Vector2( 100, 163 )
 rotation = 0.207573
 
 [node name="Crawly5" parent="Crawlies" instance=ExtResource( 3 )]
-position = Vector2( 225, 184 )
-rotation = -0.15869
+position = Vector2( 339, 168 )
+rotation = 3.15157
+
+[node name="Crawly6" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 322, 251 )
+rotation = -0.922216
+
+[node name="Crawly7" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 452, 279 )
+rotation = 1.04646
+
+[node name="Crawly8" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 146, 4 )
+
+[node name="Crawly9" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( -53, 267 )
+rotation = -0.836309
+
+[node name="Crawly10" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 67, 246 )
+rotation = 2.35619
+
+[node name="Crawly11" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( -63, 33 )
+
+[node name="Crawly12" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 220, 278 )
+rotation = -1.11599
+
+[node name="Crawly13" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 195, 113 )
+rotation = 0.716327
+
+[node name="Crawly14" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 394, 118 )
+rotation = -0.950721
+
+[node name="Crawly15" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 11, -37 )
+rotation = 0.344621
+
+[node name="Crawly16" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 272, 196 )
+rotation = -3.64105
+
+[node name="Crawly17" parent="Crawlies" instance=ExtResource( 3 )]
+position = Vector2( 415, 217 )
+rotation = -1.15345
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 60.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="White" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
 mouse_filter = 2
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 48.0
-margin_bottom = 52.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 46.0
+margin_bottom = 56.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Clock" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-margin_right = 28.0
+margin_right = 36.0
 margin_bottom = 14.0
-size_flags_horizontal = 0
 size_flags_vertical = 0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
 text = "0:00"
+align = 2
 script = ExtResource( 4 )
 timer_path = NodePath("../../../../Timer")
 
-[node name="Counter" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 28.0
-margin_bottom = 32.0
-script = ExtResource( 5 )
+margin_right = 36.0
+margin_bottom = 46.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 24, 28 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Counter" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 28.0
+margin_top = 7.0
+margin_right = 36.0
+margin_bottom = 21.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "0"
 
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource( 6 )]
 title = "Creepy Crawlies"
-description = "Find all the creepy crawlies before the timer runs out!
+description = "The place has been overrun by spiders!
 
-LEFT CLICK to identify the creepy crawlies."
+Find all the spiders before the timer runs out!
+
+LEFT CLICK to eradicate the spiders."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/snapshot = SubResource( 2 )
 
 [connection signal="failed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ -1 ]]
 [connection signal="passed" from="." to="." method="_on_CreepyCrawlies_end" binds= [ 1 ]]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="closed" from="CanvasLayer/Instructions" to="." method="_on_Instructions_closed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

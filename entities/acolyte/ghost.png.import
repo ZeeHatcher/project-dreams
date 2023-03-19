@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder_2.png-e879cc58627255616b3034eaa6385679.stex"
+path="res://.import/ghost.png-856467fe2c58f1427c68cad8823bbeca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/intro/placeholder_2.png"
-dest_files=[ "res://.import/placeholder_2.png-e879cc58627255616b3034eaa6385679.stex" ]
+source_file="res://entities/acolyte/ghost.png"
+dest_files=[ "res://.import/ghost.png-856467fe2c58f1427c68cad8823bbeca.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
