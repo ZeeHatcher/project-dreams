@@ -9,13 +9,13 @@ atlas = ExtResource( 1 )
 region = Rect2( 20, 97, 49, 49 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 9.05539
+radius = 17.0
 
 [node name="7-Tooth" type="Area2D"]
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

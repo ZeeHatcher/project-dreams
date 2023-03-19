@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/minigames/clocksmith/background.png" type="Texture" id=1]
 [ext_resource path="res://entities/clock_piece/9_tooth.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/clock_piece/5_tooth.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/clock_piece/7_tooth.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/clock_layer/layer_1.tscn" type="PackedScene" id=5]
 
 [node name="Clocksmith" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Layer1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 466, 191 )
 
 [node name="5-Tooth" parent="." instance=ExtResource( 3 )]
 position = Vector2( 291, 157 )
@@ -19,3 +23,9 @@ position = Vector2( 291, 218 )
 
 [node name="9-Tooth" parent="." instance=ExtResource( 2 )]
 position = Vector2( 244, 161 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 466, 191 )
+__meta__ = {
+"_gizmo_extents_": 116.4
+}
