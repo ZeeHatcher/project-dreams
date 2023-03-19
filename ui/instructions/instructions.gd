@@ -16,7 +16,7 @@ func _draw():
 
 
 func _input(event):
-	if visible and event.is_action_pressed("interact"):
+	if visible and event is InputEventKey and event.pressed:
 		if _is_initial:
 			emit_signal("closed")
 			_is_initial = false

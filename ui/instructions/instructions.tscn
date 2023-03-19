@@ -64,7 +64,7 @@ autowrap = true
 margin_top = 28.0
 margin_right = 386.0
 margin_bottom = 59.0
-text = "Press SPACEBAR to Continue
+text = "Press ANY KEY to continue
 (Press TAB to open this window again)"
 align = 1
 
