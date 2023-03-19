@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/map/houses/res/building_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/houses/res/furniture_tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/minigames/slide_puzzle/game.tscn" type="PackedScene" id=4]
 
 [node name="SmallHouse" type="Node2D"]
 
@@ -18,8 +16,3 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 3, 1, 2, 4, 0, 0, 65538, 3, 0, 131073, 4, 65537 )
-
-[node name="Dreamer" parent="." instance=ExtResource( 3 )]
-position = Vector2( 72, 20 )
-minigame = 2
-minigame_scene = ExtResource( 4 )

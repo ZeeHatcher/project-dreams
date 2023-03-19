@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,13 @@
 [ext_resource path="res://scenes/map/houses/mansion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/map/houses/medium_house_2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/acolyte/acolyte.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/minigames/slide_puzzle/game.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/minigames/creepy_crawlies/creepy_crawlies.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/minigames/elevator_ride/elevator_ride.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/minigames/dark_maze/dark_maze.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/minigames/falling_from_sky/falling_from_sky.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 69 )
@@ -52,6 +59,45 @@ position = Vector2( 336, 192 )
 [node name="Mansion" parent="." instance=ExtResource( 9 )]
 position = Vector2( 576, 96 )
 
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2( 10, 344 )
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource( 1 )
+
+[node name="Dreamers" type="Node" parent="."]
+
+[node name="Dreamer" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 472, 404 )
+minigame = 2
+minigame_scene = ExtResource( 13 )
+
+[node name="Dreamer2" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 216, 372 )
+minigame_scene = ExtResource( 15 )
+
+[node name="Dreamer3" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 344, 372 )
+minigame = 1
+minigame_scene = ExtResource( 14 )
+
+[node name="Dreamer4" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 168, 228 )
+minigame = 3
+minigame_scene = ExtResource( 16 )
+
+[node name="Dreamer5" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 200, 228 )
+minigame = 4
+minigame_scene = ExtResource( 17 )
+
+[node name="Dreamer6" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 456, 212 )
+minigame = 5
+minigame_scene = ExtResource( 18 )
+
 [node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 416, 320 )
 
@@ -63,13 +109,5 @@ limit_right = 848
 limit_bottom = 640
 script = ExtResource( 4 )
 tracked = NodePath("../Player")
-
-[node name="Exit" type="Area2D" parent="."]
-position = Vector2( 10, 344 )
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
