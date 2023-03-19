@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/minigames/constellation/assets/wing wing.wav" type="AudioStream" id=1]
+[ext_resource path="res://scenes/minigames/constellation/star_path.gd" type="Script" id=3]
+
+[node name="StarPath" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="snd_star" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 1 )
+volume_db = -10.182
+pitch_scale = 1.58

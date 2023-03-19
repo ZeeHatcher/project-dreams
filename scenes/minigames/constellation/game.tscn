@@ -1,0 +1,347 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/minigames/constellation/assets/dark_sky.png" type="Texture" id=1]
+[ext_resource path="res://scenes/minigames/constellation/star_path_segment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/minigames/constellation/star_path_node.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/minigames/constellation/star_path.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/minigames/constellation/game.gd" type="Script" id=6]
+[ext_resource path="res://ui/clock/clock.gd" type="Script" id=7]
+[ext_resource path="res://scenes/minigames/constellation/assets/theme_3.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/minigames/constellation/assets/chime.wav" type="AudioStream" id=9]
+[ext_resource path="res://scenes/minigames/constellation/assets/chime reverse.wav" type="AudioStream" id=10]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_high_quality = true
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Glow" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 0.212342, 0.201342 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="StarPath" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath" instance=ExtResource( 3 )]
+position = Vector2( 48, 171 )
+
+[node name="StarPathSegment" parent="StarPath/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 0, -5 )
+rotation = -0.863162
+length = 6
+
+[node name="StarPathNode" parent="StarPath/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 62.1472, 3.4241 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -1.82458, 5.80266 )
+rotation = 2.65335
+length = 8
+
+[node name="StarPathNode" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 82.6401, 1.89816 )
+
+[node name="StarPathSegment" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -2.42801, -1.76196 )
+rotation = -1.77371
+length = 15
+
+[node name="StarPathNode" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 149.945, 2.54414 )
+
+[node name="StarPathSegment" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -3.49994, -0.866348 )
+rotation = 4.51552
+length = 8
+
+[node name="StarPathNode" parent="StarPath/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 80.0988, 3.03016 )
+rotation = -2.94469
+
+[node name="StarPath2" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath2" instance=ExtResource( 3 )]
+position = Vector2( 149, 258 )
+
+[node name="StarPathSegment" parent="StarPath2/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -1.52588e-05, -4 )
+rotation = -0.85906
+length = 12
+
+[node name="StarPathNode" parent="StarPath2/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 122.466, 2.65619 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -0.945068, 6.9357 )
+rotation = 2.65335
+length = 3
+
+[node name="StarPathNode" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 32.0731, 3.36349 )
+
+[node name="StarPathSegment" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 4.18729, -0.683273 )
+rotation = 0.807874
+length = 5
+
+[node name="StarPathNode" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 53.3183, 2.271 )
+
+[node name="StarPathSegment" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 3.9323, -0.732788 )
+rotation = 0.434546
+length = 8
+
+[node name="StarPathNode" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 81.9502, 3.02679 )
+rotation = -2.94469
+
+[node name="StarPathSegment" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -0.128479, -4.24072 )
+rotation = -0.570208
+length = 9
+
+[node name="StarPathNode" parent="StarPath2/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 91.4373, 2.86533 )
+rotation = 1.45398
+
+[node name="StarPath3" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath3" instance=ExtResource( 3 )]
+position = Vector2( 480, 23 )
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2, -3 )
+rotation = -0.0787557
+length = 6
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 62.1472, 3.4241 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 4.28705, 1.50037 )
+rotation = 1.3512
+length = 8
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 82.6401, 1.89816 )
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 1.27136, 4.00607 )
+rotation = -4.09344
+length = 6
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 60.2545, 3.79469 )
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -3.82019, -3.37733 )
+rotation = 4.2586
+length = 5
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 51.317, 2.9245 )
+rotation = -2.94469
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( -2.83405, -2.82288 )
+rotation = -1.16015
+length = 7
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 70.775, 2.98184 )
+
+[node name="StarPathSegment" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 3.15817, 0.161316 )
+rotation = 1.25318
+length = 8
+
+[node name="StarPathNode" parent="StarPath3/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 80.5489, 2.97937 )
+
+[node name="StarPath4" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath4" instance=ExtResource( 3 )]
+position = Vector2( 25, 89 )
+rotation = -0.042551
+
+[node name="StarPathSegment" parent="StarPath4/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 0.170155, -3.99638 )
+rotation = -0.479109
+length = 6
+
+[node name="StarPathNode" parent="StarPath4/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 62.1472, 3.4241 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath4/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.8912, 4.12909 )
+rotation = 1.83014
+length = 8
+
+[node name="StarPathNode" parent="StarPath4/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 83.4362, 2.0806 )
+
+[node name="StarPath5" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath5" instance=ExtResource( 3 )]
+position = Vector2( 384, 89 )
+rotation = -0.042551
+
+[node name="StarPathSegment" parent="StarPath5/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 1.87061, 3.08237 )
+rotation = 2.27231
+length = 5
+
+[node name="StarPathNode" parent="StarPath5/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 51.6526, 3.00162 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.8912, 4.12909 )
+rotation = 3.20911
+length = 8
+
+[node name="StarPathNode" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 83.4362, 2.0806 )
+
+[node name="StarPathSegment" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.21414, 2.77921 )
+rotation = 1.88791
+length = 9
+
+[node name="StarPathNode" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 91.3871, 3.22373 )
+
+[node name="StarPathSegment" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.54712, 2.55191 )
+rotation = 2.0236
+length = 16
+
+[node name="StarPathNode" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 161.619, 2.86993 )
+
+[node name="StarPathSegment" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 0.220718, 3.59882 )
+rotation = 2.3587
+length = 17
+
+[node name="StarPathNode" parent="StarPath5/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 170.158, 2.69522 )
+rotation = 0.383212
+
+[node name="StarPath6" parent="." instance=ExtResource( 4 )]
+
+[node name="StarPathNode" parent="StarPath6" instance=ExtResource( 3 )]
+position = Vector2( 475, 311 )
+rotation = 1.68163
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 0.442444, 3.97546 )
+rotation = 2.27231
+length = 11
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 111.147, 3.36945 )
+rotation = -0.847136
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 1.89444, 3.06769 )
+rotation = 2.22135
+length = 7
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 71.3844, 2.96677 )
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.21414, 2.77921 )
+rotation = 1.9291
+length = 6
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 60.8466, 2.21952 )
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+rotation = -1.87682
+length = 6
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 60.3289, 2.41791 )
+rotation = 1.84259
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.4906, -3.12994 )
+rotation = 0.0286589
+length = 6
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 62.1179, 2.16501 )
+
+[node name="StarPathSegment" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode" instance=ExtResource( 2 )]
+position = Vector2( 2.97015, 1.08548 )
+rotation = 1.33376
+length = 11
+
+[node name="StarPathNode" parent="StarPath6/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment/StarPathNode/StarPathSegment" instance=ExtResource( 3 )]
+position = Vector2( 112.025, 2.9411 )
+rotation = 1.6825
+
+[node name="Hud" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Instructions" parent="Hud" instance=ExtResource( 5 )]
+title = "Constellations"
+description = "Trace the constellations with your mouse within the time limit."
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud"]
+margin_left = 8.0
+margin_top = 8.0
+
+[node name="Clock" type="Label" parent="Hud/MarginContainer"]
+margin_right = 28.0
+margin_bottom = 14.0
+text = "0:00"
+script = ExtResource( 7 )
+timer_path = NodePath("../../../Timer")
+
+[node name="EndTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 30.0
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 8 )
+volume_db = -17.454
+
+[node name="snd_cleared" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="snd_time_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+pitch_scale = 0.66
+
+[connection signal="cleared" from="StarPath" to="." method="_on_StarPath_cleared"]
+[connection signal="cleared" from="StarPath2" to="." method="_on_StarPath_cleared"]
+[connection signal="cleared" from="StarPath3" to="." method="_on_StarPath_cleared"]
+[connection signal="cleared" from="StarPath4" to="." method="_on_StarPath_cleared"]
+[connection signal="cleared" from="StarPath5" to="." method="_on_StarPath_cleared"]
+[connection signal="cleared" from="StarPath6" to="." method="_on_StarPath_cleared"]
+[connection signal="closed" from="Hud/Instructions" to="." method="_on_Instructions_closed"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
