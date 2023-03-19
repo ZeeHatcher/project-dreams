@@ -8,8 +8,8 @@ onready var end_timer = $"%EndTimer"
 onready var timer = $"%Timer"
 onready var hud = $"%Hud"
 onready var bgm = $"%Bgm"
-onready var snd_cleared = $snd_cleared
-onready var snd_time_up = $snd_time_up
+onready var snd_cleared = $"%snd_cleared"
+onready var snd_time_up = $"%snd_time_up"
 
 
 func _ready():

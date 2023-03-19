@@ -332,10 +332,12 @@ stream = ExtResource( 8 )
 volume_db = -26.041
 
 [node name="snd_cleared" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource( 9 )
 volume_db = -20.514
 
 [node name="snd_time_up" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource( 10 )
 volume_db = -20.513
 pitch_scale = 0.66
