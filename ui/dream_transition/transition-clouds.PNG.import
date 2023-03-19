@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/transition-clouds.PNG-2489ead6b3f36ae1faa86fc0d372c576.stex"
+path="res://.import/transition-clouds.PNG-ed02221931f62635054366befb35e451.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://transition-clouds.PNG"
-dest_files=[ "res://.import/transition-clouds.PNG-2489ead6b3f36ae1faa86fc0d372c576.stex" ]
+source_file="res://ui/dream_transition/transition-clouds.PNG"
+dest_files=[ "res://.import/transition-clouds.PNG-ed02221931f62635054366befb35e451.stex" ]
 
 [params]
 

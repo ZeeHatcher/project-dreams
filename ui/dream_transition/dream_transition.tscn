@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/dream_transition/dream_transition.gd" type="Script" id=1]
+[ext_resource path="res://ui/dream_transition/transition-clouds.PNG" type="Texture" id=2]
 
 [sub_resource type="Animation" id=3]
 resource_name = "RESET"
@@ -17,7 +18,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Control/Clouds:rect_position")
+tracks/1/path = NodePath("Control/TextureRect:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -33,46 +34,19 @@ tracks/1/keys = {
 resource_name = "in"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Control/Clouds:rect_position")
+tracks/0/path = NodePath("Control/White:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 360 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Control/White:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="Animation" id=2]
-resource_name = "out"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Control/Clouds:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -360 ) ]
-}
 tracks/1/type = "value"
-tracks/1/path = NodePath("Control/White:color")
+tracks/1/path = NodePath("Control/TextureRect:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -81,7 +55,34 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
+"values": [ Vector2( 0, 360 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/White:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -360 ) ]
 }
 
 [node name="Transition" type="CanvasLayer"]
@@ -100,18 +101,11 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 
-[node name="Clouds" type="ColorRect" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TextureRect" type="TextureRect" parent="Control"]
 margin_top = 360.0
-margin_bottom = 360.0
-color = Color( 0.745098, 0.952941, 1, 1 )
-
-[node name="Label" type="Label" parent="Control/Clouds"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "clouds or something"
+margin_right = 640.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
