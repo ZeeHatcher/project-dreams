@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crawly.png-485804c9e11d55e23ddb67533776a225.stex"
+path="res://.import/bg.png-302eccfa6fab774a5cc3fbb5f62f3ceb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/crawly/crawly.png"
-dest_files=[ "res://.import/crawly.png-485804c9e11d55e23ddb67533776a225.stex" ]
+source_file="res://scenes/minigames/creepy_crawlies/bg.png"
+dest_files=[ "res://.import/bg.png-302eccfa6fab774a5cc3fbb5f62f3ceb.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
