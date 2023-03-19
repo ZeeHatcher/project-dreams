@@ -1,9 +1,8 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/map/res/decoration_tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://misc/camera.gd" type="Script" id=4]
 [ext_resource path="res://scenes/map/map.gd" type="Script" id=5]
 [ext_resource path="res://scenes/map/houses/medium_house_1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/map/houses/large_house.tscn" type="PackedScene" id=7]
@@ -191,14 +190,16 @@ minigame_scene = ExtResource( 19 )
 [node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 416, 320 )
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera")
+
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 416, 320 )
 current = true
 limit_left = 0
 limit_top = 0
 limit_right = 848
 limit_bottom = 640
-script = ExtResource( 4 )
-tracked = NodePath("../Player")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
@@ -208,5 +209,8 @@ volume_db = -16.0
 anims/RESET = SubResource( 2 )
 anims/in = SubResource( 3 )
 anims/out = SubResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.219608, 0.219608, 0.219608, 1 )
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
