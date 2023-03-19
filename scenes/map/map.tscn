@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/minigames/dark_maze/dark_maze.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/minigames/falling_from_sky/falling_from_sky.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/minigames/clocksmith/clocksmith.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 69 )
@@ -97,6 +98,11 @@ minigame_scene = ExtResource( 17 )
 position = Vector2( 456, 212 )
 minigame = 5
 minigame_scene = ExtResource( 18 )
+
+[node name="Dreamer7" parent="Dreamers" instance=ExtResource( 12 )]
+position = Vector2( 456, 262 )
+minigame = 6
+minigame_scene = ExtResource( 19 )
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 416, 320 )
