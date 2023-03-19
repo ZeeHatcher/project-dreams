@@ -5,6 +5,10 @@ onready var _player = $Player
 onready var _animation_player = $AnimationPlayer
 
 
+func _init():
+	randomize()
+
+
 func _ready():
 	if MapData.player_position != null:
 		_player.position = MapData.player_position
