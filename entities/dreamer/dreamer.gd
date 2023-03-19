@@ -14,7 +14,6 @@ func _ready():
 		MapData.minigames_result[minigame] = 0
 	elif MapData.minigames_result[minigame] != 0:
 		set_collision_layer_bit(0, false)
-		$Polygon2D.color = Color.green if MapData.minigames_result[minigame] == 1 else Color.red
 
 
 func interact():
