@@ -69,6 +69,8 @@ func reset():
 	target_node = get_node("./StarPathNode")
 	target_node.set_colorhint_strength(0.5)
 	target_node.sprite.self_modulate = glow
+	current_node = null
+	current_path = null
 	
 	var target: Node2D = target_node
 	var path: Node2D
