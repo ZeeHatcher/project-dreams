@@ -35,14 +35,14 @@ _global_script_classes=[ {
 "path": "res://scenes/minigames/falling_from_sky/LinearRandSpawner.gd"
 }, {
 "base": "Area2D",
-"class": "SkyFallingBorderBody2D",
-"language": "GDScript",
-"path": "res://scenes/minigames/falling_from_sky/Borders.gd"
-}, {
-"base": "Area2D",
 "class": "PettingSpot",
 "language": "GDScript",
 "path": "res://entities/pets/petting_spot.gd"
+}, {
+"base": "Area2D",
+"class": "SkyFallingBorderBody2D",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/Borders.gd"
 } ]
 _global_script_class_icons={
 "Clock": "",
@@ -50,8 +50,8 @@ _global_script_class_icons={
 "Globals": "",
 "IcarusBody2D": "",
 "LinearRandSpawner": "",
+"PettingSpot": "",
 "SkyFallingBorderBody2D": ""
-"PettingSpot": ""
 }
 
 [application]
@@ -111,15 +111,6 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
-restart={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":82,"unicode":0,"echo":false,"script":null)
- ]
-}
-
-[navigation]
-
-2d/default_edge_connection_margin=2.0
 
 [physics]
 
@@ -127,5 +118,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
