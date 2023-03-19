@@ -23,11 +23,29 @@ _global_script_classes=[ {
 "class": "Globals",
 "language": "GDScript",
 "path": "res://misc/globals.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "IcarusBody2D",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/icarus_controller.gd"
+}, {
+"base": "Node2D",
+"class": "LinearRandSpawner",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/LinearRandSpawner.gd"
+}, {
+"base": "Area2D",
+"class": "SkyFallingBorderBody2D",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/Borders.gd"
 } ]
 _global_script_class_icons={
 "Clock": "",
 "Counter": "",
-"Globals": ""
+"Globals": "",
+"IcarusBody2D": "",
+"LinearRandSpawner": "",
+"SkyFallingBorderBody2D": ""
 }
 
 [application]
@@ -50,7 +68,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/segmented_progress/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 

@@ -1,0 +1,2 @@
+class_name SkyFallingBorderBody2D
+extends Area2D
