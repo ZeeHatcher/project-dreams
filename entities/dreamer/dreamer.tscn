@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/dreamer/dreamer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dreamer/dreamer.png" type="Texture" id=2]
 [ext_resource path="res://entities/dreamer/z.png" type="Texture" id=3]
+[ext_resource path="res://entities/dreamer/sleep.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
@@ -69,4 +70,6 @@ process_material = SubResource( 10 )
 texture = ExtResource( 3 )
 
 [node name="Emotion" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -17 )
+texture = ExtResource( 4 )
