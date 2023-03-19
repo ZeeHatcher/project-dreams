@@ -35,6 +35,8 @@ func _ready():
 	apollo_tween.tween_callback(self, "spawn_apollo")
 
 	icarus.connect("hurt", self, "fail_minigame")
+	
+	get_tree().paused = true
 
 onready var phoenix_scn = preload("res://entities/sky_traffic/phoenix.tscn")
 onready var apollo_scn = preload("res://entities/sky_traffic/apollo.tscn")
@@ -89,3 +91,7 @@ func win_minigame():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Instructions_closed():
+	get_tree().paused = false

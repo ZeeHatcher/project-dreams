@@ -302,7 +302,9 @@ unique_name_in_owner = true
 
 [node name="Instructions" parent="Hud" instance=ExtResource( 5 )]
 title = "Constellations"
-description = "Trace the constellations with your mouse within the time limit."
+description = "A beautiful starry night, perfect for constellations.
+
+Hold LEFT CLICK and drag to trace the constellations."
 
 [node name="MarginContainer" type="MarginContainer" parent="Hud"]
 margin_left = 8.0
@@ -327,13 +329,15 @@ wait_time = 30.0
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 8 )
-volume_db = -17.454
+volume_db = -26.041
 
 [node name="snd_cleared" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+volume_db = -15.743
 
 [node name="snd_time_up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -17.174
 pitch_scale = 0.66
 
 [connection signal="cleared" from="StarPath" to="." method="_on_StarPath_cleared"]

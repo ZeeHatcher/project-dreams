@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://scenes/minigames/slide_puzzle/game.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/minigames/creepy_crawlies/creepy_crawlies.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/minigames/dark_maze/dark_maze.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/minigames/falling_from_sky/falling_from_sky.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/minigames/clocksmith/clocksmith.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/map/assets/night-ambience-17064.mp3" type="AudioStream" id=20]
@@ -129,7 +128,7 @@ tile_data = PoolIntArray( 65544, 0, 65536, 65545, 0, 65537, 65546, 0, 65537, 655
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 65545, 0, 1, 65547, 4, 65539, 65549, 0, 2, 131075, 0, 0, 131076, 1, 2, 131082, 4, 0, 131083, 2, 65536, 131084, 4, 0, 131089, 0, 1, 131090, 1, 1, 196612, 4, 0, 196619, 3, 2, 196624, 2, 2, 196626, 4, 0, 262149, 3, 0, 262160, 3, 2, 524294, 0, 2, 524297, 0, 0, 524300, 1, 0, 524303, 0, 1, 589828, 3, 1, 589834, 5, 0, 589836, 2, 0, 589840, 3, 2, 655366, 4, 0, 655371, 4, 65536, 655372, 4, 2, 655376, 4, 1, 655377, 4, 65536 )
+tile_data = PoolIntArray( 65545, 0, 1, 65547, 4, 65539, 65549, 0, 2, 131075, 0, 0, 131076, 1, 2, 131082, 4, 0, 131083, 2, 65536, 131084, 4, 0, 131089, 0, 1, 131090, 1, 1, 196612, 4, 0, 196619, 3, 2, 196624, 2, 2, 196626, 4, 0, 262149, 3, 0, 262160, 3, 2, 524297, 0, 0, 524300, 1, 0, 524303, 0, 1, 589828, 3, 1, 589830, 2, 0, 589834, 5, 0, 589836, 2, 0, 589840, 3, 2, 655364, 4, 1, 655365, 4, 65536, 655366, 4, 2, 655371, 4, 65536, 655372, 4, 2, 655376, 4, 1, 655377, 4, 65536 )
 
 [node name="Decorations" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -173,11 +172,6 @@ minigame_scene = ExtResource( 14 )
 position = Vector2( 280, 53 )
 minigame = 3
 minigame_scene = ExtResource( 16 )
-
-[node name="Dreamer5" parent="Dreamers" instance=ExtResource( 12 )]
-position = Vector2( 104, 149 )
-minigame = 4
-minigame_scene = ExtResource( 17 )
 
 [node name="Dreamer6" parent="Dreamers" instance=ExtResource( 12 )]
 position = Vector2( 248, 149 )

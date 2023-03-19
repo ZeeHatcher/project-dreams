@@ -221,11 +221,11 @@ pause_mode = 2
 title = "Clocksmith"
 description = "Arrange the gears such that the hands of the clock on all the layers point upwards at the same time.
 
-Beware, you have 7 tries before the clock breaks.
-
 LEFT CLICK and drag the gears to the slots on the clock to set them into the clock.
 
-Press the Run button once you are ready to make an attempt."
+Press the Run button once you are ready to make an attempt.
+
+Beware, you have 7 tries before the clock breaks."
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchor_left = 1.0

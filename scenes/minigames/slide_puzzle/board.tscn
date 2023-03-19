@@ -100,22 +100,23 @@ tint_progress = Color( 0.545098, 0.505882, 0.447059, 1 )
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 7 )
-volume_db = -6.9
+volume_db = -25.028
 
 [node name="snd_scream" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 5 )
+volume_db = -26.715
 
 [node name="snd_destroy" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 10 )
-volume_db = -9.613
+volume_db = -24.879
 pitch_scale = 1.33
 
 [node name="snd_blocked" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 9 )
-volume_db = -5.243
+volume_db = -24.326
 
 [node name="snd_move_queue" type="Node" parent="."]
 unique_name_in_owner = true
@@ -123,7 +124,7 @@ script = ExtResource( 11 )
 
 [node name="snd_move" type="AudioStreamPlayer" parent="snd_move_queue"]
 stream = ExtResource( 8 )
-volume_db = -10.0
+volume_db = -16.202
 
 [connection signal="timeout" from="EndAnimationTimer" to="." method="_on_EndAnimationTimer_timeout"]
 [connection signal="timeout" from="Hud/MarginContainerTL/VSplitContainer/Clock/GameTimer" to="." method="_on_GameTimer_timeout"]

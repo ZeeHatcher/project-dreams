@@ -251,7 +251,7 @@ text = "0"
 
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource( 6 )]
 title = "Creepy Crawlies"
-description = "The place has been overrun by spiders!
+description = "Spiders everywhere!
 
 Find all the spiders before the timer runs out!
 
