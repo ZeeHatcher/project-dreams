@@ -42,6 +42,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ -32.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "in"
@@ -82,6 +94,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ -64.0, -42.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "out"
@@ -121,6 +145,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1.25, 1 ),
 "update": 0,
 "values": [ -40.0, -64.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Transition" type="CanvasLayer"]
