@@ -1,8 +1,14 @@
 extends Area2D
 
 
+export(int) var teeth_count
+
 var _is_held = false
 var _slot
+
+
+func _ready():
+	add_to_group("clock_pieces")
 
 
 func _physics_process(delta):
@@ -11,6 +17,9 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
+	if not _is_held:
+		return
+	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not event.pressed:
 		_is_held = false
 		

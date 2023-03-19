@@ -1,31 +1,181 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/minigames/clocksmith/background.png" type="Texture" id=1]
 [ext_resource path="res://entities/clock_piece/9_tooth.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/clock_piece/5_tooth.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/clock_piece/7_tooth.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/clock_layer/layer_1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/clock_layer/layer_2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/minigames/clocksmith/buttons.png" type="Texture" id=7]
+[ext_resource path="res://scenes/minigames/clocksmith/clocksmith.gd" type="Script" id=8]
+[ext_resource path="res://entities/clock_layer/layer_3.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SegmentShape2D" id=4]
+b = Vector2( 0, -38 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 19 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 45, 1, 35, 14 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 90, 1, 35, 14 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 37, 16 )
 
 [node name="Clocksmith" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Layer1" parent="." instance=ExtResource( 5 )]
+[node name="Layers" type="Node2D" parent="."]
+
+[node name="Layer1" type="Node2D" parent="Layers"]
+
+[node name="ClockLayer" parent="Layers/Layer1" instance=ExtResource( 5 )]
 position = Vector2( 466, 191 )
 
-[node name="5-Tooth" parent="." instance=ExtResource( 3 )]
-position = Vector2( 291, 157 )
+[node name="5-Tooth" parent="Layers/Layer1" instance=ExtResource( 3 )]
+position = Vector2( 321, 257 )
 
-[node name="7-Tooth" parent="." instance=ExtResource( 4 )]
-position = Vector2( 291, 218 )
+[node name="7-Tooth" parent="Layers/Layer1" instance=ExtResource( 4 )]
+position = Vector2( 303, 304 )
 
-[node name="9-Tooth" parent="." instance=ExtResource( 2 )]
-position = Vector2( 244, 161 )
+[node name="9-Tooth" parent="Layers/Layer1" instance=ExtResource( 2 )]
+position = Vector2( 354, 297 )
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="Layer2" type="Node2D" parent="Layers"]
+visible = false
+
+[node name="ClockLayer" parent="Layers/Layer2" instance=ExtResource( 6 )]
 position = Vector2( 466, 191 )
-__meta__ = {
-"_gizmo_extents_": 116.4
-}
+
+[node name="5-Tooth" parent="Layers/Layer2" instance=ExtResource( 3 )]
+position = Vector2( 328, 244 )
+
+[node name="7-Tooth" parent="Layers/Layer2" instance=ExtResource( 4 )]
+position = Vector2( 292, 284 )
+
+[node name="9-Tooth" parent="Layers/Layer2" instance=ExtResource( 2 )]
+position = Vector2( 369, 309 )
+
+[node name="7-Tooth2" parent="Layers/Layer2" instance=ExtResource( 4 )]
+position = Vector2( 319, 303 )
+
+[node name="Layer3" type="Node2D" parent="Layers"]
+visible = false
+
+[node name="ClockLayer" parent="Layers/Layer3" instance=ExtResource( 9 )]
+position = Vector2( 466, 191 )
+
+[node name="5-Tooth" parent="Layers/Layer3" instance=ExtResource( 3 )]
+position = Vector2( 323, 223 )
+
+[node name="7-Tooth" parent="Layers/Layer3" instance=ExtResource( 4 )]
+position = Vector2( 281, 261 )
+
+[node name="9-Tooth" parent="Layers/Layer3" instance=ExtResource( 2 )]
+position = Vector2( 364, 303 )
+
+[node name="7-Tooth2" parent="Layers/Layer3" instance=ExtResource( 4 )]
+position = Vector2( 278, 296 )
+
+[node name="7-Tooth3" parent="Layers/Layer3" instance=ExtResource( 4 )]
+position = Vector2( 312, 280 )
+
+[node name="EndLine" type="Area2D" parent="."]
+position = Vector2( 466, 149 )
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndLine"]
+shape = SubResource( 4 )
+
+[node name="EndArea" type="Area2D" parent="."]
+position = Vector2( 466, 130 )
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+shape = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LayerButtons" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 0.45
+anchor_right = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/LayerButtons"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 342.0
+margin_bottom = 24.0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LayerButtons/CenterContainer"]
+margin_left = 104.0
+margin_right = 228.0
+margin_bottom = 14.0
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer"]
+margin_right = 35.0
+margin_bottom = 14.0
+texture_normal = SubResource( 1 )
+
+[node name="Label" type="Label" parent="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 39.0
+margin_right = 85.0
+margin_bottom = 14.0
+text = "Layer 1"
+
+[node name="NextButton" type="TextureButton" parent="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer"]
+margin_left = 89.0
+margin_right = 124.0
+margin_bottom = 14.0
+texture_normal = SubResource( 2 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 0.45
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer2"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 342.0
+margin_bottom = 26.0
+size_flags_vertical = 0
+
+[node name="RunButton" type="TextureButton" parent="CanvasLayer/MarginContainer2/CenterContainer"]
+margin_left = 147.0
+margin_right = 184.0
+margin_bottom = 16.0
+texture_normal = SubResource( 3 )
+
+[connection signal="area_entered" from="EndLine" to="." method="_on_EndLine_area_entered"]
+[connection signal="pressed" from="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer2/CenterContainer/RunButton" to="." method="_on_RunButton_pressed"]

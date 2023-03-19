@@ -8,6 +8,7 @@ enum Minigames {
 	SLIDE_PUZZLE,
 	PETTING_ZOO,
 	DARK_MAZE,
+	CLOCKSMITH,
 }
 
 const LEVELS = ["G", "L1", "L2", "L3", "L4", "L5"]

@@ -14,6 +14,7 @@ radius = 17.0
 [node name="7-Tooth" type="Area2D"]
 collision_mask = 2
 script = ExtResource( 2 )
+teeth_count = 7
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )

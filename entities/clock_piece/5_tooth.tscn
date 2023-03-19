@@ -14,6 +14,7 @@ radius = 15.0
 [node name="5-Tooth" type="Area2D"]
 collision_mask = 2
 script = ExtResource( 2 )
+teeth_count = 5
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 2 )
