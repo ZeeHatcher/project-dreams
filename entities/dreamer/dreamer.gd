@@ -8,6 +8,8 @@ export(PackedScene) var minigame_scene
 
 
 func _ready():
+	$AnimatedSprite.frame = randi() % 4
+	
 	if not minigame in MapData.minigames_result:
 		MapData.minigames_result[minigame] = 0
 	elif MapData.minigames_result[minigame] != 0:
