@@ -7,6 +7,8 @@ signal closed
 export(String) var title
 export(String, MULTILINE) var description
 
+var _is_initial = true
+
 
 func _draw():
 	$"%Title".text = title
@@ -14,6 +16,16 @@ func _draw():
 
 
 func _input(event):
-	if event.is_action_pressed("interact"):
-		emit_signal("closed")
-		queue_free()
+	if visible and event.is_action_pressed("interact"):
+		if _is_initial:
+			emit_signal("closed")
+			_is_initial = false
+			
+		visible = false
+		get_tree().set_input_as_handled()
+	elif (
+			event is InputEventKey
+			and event.scancode == KEY_TAB
+			and event.pressed
+	):
+		visible = true

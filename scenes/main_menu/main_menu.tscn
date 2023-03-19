@@ -52,5 +52,20 @@ margin_bottom = 44.0
 text = "Credits"
 flat = true
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 197.0
+margin_bottom = 27.0
+text = "Wildcards: A Fork in the Road"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]

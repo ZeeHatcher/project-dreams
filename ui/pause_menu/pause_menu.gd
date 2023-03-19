@@ -22,8 +22,9 @@ func _input(event):
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	get_tree().paused = false
+	visible = false
 
 
 func _on_HSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(_master_bus, linear2db(value))
-	print(AudioServer.get_bus_volume_db(_master_bus))
