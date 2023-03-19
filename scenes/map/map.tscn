@@ -3,6 +3,7 @@
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/map/res/decoration_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/minigames/constellation/game.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/map/map.gd" type="Script" id=5]
 [ext_resource path="res://scenes/map/houses/medium_house_1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/map/houses/large_house.tscn" type="PackedScene" id=7]
@@ -13,7 +14,6 @@
 [ext_resource path="res://entities/dreamer/dreamer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/minigames/slide_puzzle/game.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/minigames/creepy_crawlies/creepy_crawlies.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/minigames/elevator_ride/elevator_ride.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/minigames/dark_maze/dark_maze.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/minigames/falling_from_sky/falling_from_sky.tscn" type="PackedScene" id=18]
@@ -151,7 +151,10 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 shape = SubResource( 1 )
 
-[node name="Dreamers" type="Node" parent="."]
+[node name="Dreamers" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Dreamer" parent="Dreamers" instance=ExtResource( 12 )]
 position = Vector2( 472, 404 )
@@ -160,7 +163,8 @@ minigame_scene = ExtResource( 13 )
 
 [node name="Dreamer2" parent="Dreamers" instance=ExtResource( 12 )]
 position = Vector2( 216, 372 )
-minigame_scene = ExtResource( 15 )
+minigame = 7
+minigame_scene = ExtResource( 4 )
 
 [node name="Dreamer3" parent="Dreamers" instance=ExtResource( 12 )]
 position = Vector2( 344, 372 )
