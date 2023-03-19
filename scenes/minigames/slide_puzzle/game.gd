@@ -12,7 +12,10 @@ func start_game():
 
 
 func game_won(required_turns):
-	MapData.save_minigame_result(Globals.Minigames.SLIDE_PUZZLE, 1)
+	if required_turns >= 666:
+		MapData.save_minigame_result(Globals.Minigames.SLIDE_PUZZLE, -1)
+	else:
+		MapData.save_minigame_result(Globals.Minigames.SLIDE_PUZZLE, 1)
 
 
 func _on_Instructions_closed():

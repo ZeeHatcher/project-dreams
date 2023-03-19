@@ -3,6 +3,7 @@ extends Node2D
 
 var constellations: Array
 var cleared_consteallations: int
+var restarts: int
 
 onready var end_timer = $"%EndTimer"
 onready var timer = $"%Timer"
@@ -39,10 +40,19 @@ func game_won():
 
 
 func _on_EndTimer_timeout():
-	MapData.save_minigame_result(Globals.Minigames.CONSTELLATION, 1)
+	if restarts < 3:
+		MapData.save_minigame_result(Globals.Minigames.CONSTELLATION, 1)
+	else:
+		MapData.save_minigame_result(Globals.Minigames.CONSTELLATION, -1)
 
 
 func _on_Timer_timeout():
+	restarts += 1
+	
+	if restarts == 3:
+		game_won()
+		return
+	
 	snd_time_up.play()
 	cleared_consteallations = 0
 	for c in constellations:
