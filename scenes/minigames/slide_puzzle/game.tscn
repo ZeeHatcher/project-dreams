@@ -14,7 +14,9 @@ unique_name_in_owner = true
 
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource( 3 )]
 title = "Slide Puzzle"
-description = "Solve the image with as little moves as possible.
+description = "Wh- what am I dreaming of? I can't see through the mists.
+
+Solve the image with as little moves as possible.
 LEFT CLICK on a tile to slide it to an empty space.
 RIGHT CLICK to destroy a tile, making space for other tiles to move into.
 You can only move tiles that have one possible move.

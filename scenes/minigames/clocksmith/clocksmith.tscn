@@ -219,7 +219,9 @@ texture_normal = SubResource( 3 )
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource( 10 )]
 pause_mode = 2
 title = "Clocksmith"
-description = "Arrange the gears such that the hands of the clock on all the layers point upwards at the same time.
+description = "Could I prototype an Antikythera...?
+
+Arrange the gears such that the hands of the clock on all the layers point upwards at the same time.
 
 LEFT CLICK and drag the gears to the slots on the clock to set them into the clock.
 
