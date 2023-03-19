@@ -1,14 +1,7 @@
 extends Control
 
 
-const content = [
-	"To dream...\nSlipping into the void, a previewing of Elysium...",
-	"Mortals spend their lives,\nattempting to glimpse our power...",
-	"Blessed have you been, my acolyte...\nTo move as a whisper among their minds...",
-	"Omens parted to the slumbering, on your shoulders,\ntheir miniscule worlds will carry...",
-	"Now show me how you wield those burdens...",
-	"ARROW KEYS/WASD\nto move\n\nSPACEBAR to enter dreams of slumberers",
-]
+export(Array, String, MULTILINE) var content
 
 var _index = -1
 
@@ -22,7 +15,7 @@ func _ready():
 	_audio_player.play()
 	var tween = create_tween()
 	_audio_player.volume_db = -80
-	tween.tween_property(_audio_player, "volume_db", -24, 2)
+	tween.tween_property(_audio_player, "volume_db", -24, 1)
 	_next()
 
 
