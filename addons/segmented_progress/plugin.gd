@@ -3,7 +3,7 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	add_custom_type("SegmentedProgress", "Control", preload("segmented_progress.gd"), preload("SegmentedProgress.svg"))
+	add_custom_type("SegmentedProgress", "Control", preload("segmented_progress.gd"), null)
 
 
 func _exit_tree():
