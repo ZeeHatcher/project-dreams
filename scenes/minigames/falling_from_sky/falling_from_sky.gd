@@ -81,10 +81,10 @@ func spawn_apollo():
 
 
 func fail_minigame():
-	MapData.save_minigame_result(Globals.Minigames.SKYFALL, false)
+	MapData.save_minigame_result(Globals.Minigames.SKYFALL, -1)
 
 func win_minigame():
-	MapData.save_minigame_result(Globals.Minigames.SKYFALL, true)
+	MapData.save_minigame_result(Globals.Minigames.SKYFALL, 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
