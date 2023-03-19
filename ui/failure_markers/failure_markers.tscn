@@ -6,17 +6,17 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 36, 32 )
+region = Rect2( 0, 0, 36, 36 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 36, 0, 36, 32 )
+region = Rect2( 36, 0, 36, 36 )
 
 [node name="FailureMarkers" type="Control"]
-margin_right = 3.0
-margin_bottom = 1.0
-rect_min_size = Vector2( 3, 1 )
+margin_right = 108.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 108, 32 )
 script = ExtResource( 2 )
 filled = SubResource( 1 )
 empty = SubResource( 2 )

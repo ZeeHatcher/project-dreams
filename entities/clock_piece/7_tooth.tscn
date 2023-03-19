@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/clock.png" type="Texture" id=1]
+[ext_resource path="res://entities/clock_piece/clock_piece.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 20, 97, 49, 49 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 17.0
+
+[node name="7-Tooth" type="Area2D"]
+collision_mask = 2
+script = ExtResource( 2 )
+teeth_count = 7
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="input_event" from="." to="." method="_on_ClockPiece_input_event"]
