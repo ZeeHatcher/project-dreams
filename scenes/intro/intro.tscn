@@ -16,6 +16,8 @@ To move as a whisper among their minds...", "Omens parted to the slumbering, on 
 their miniscule worlds will carry...", "Now show me how you wield those burdens...", "ARROW KEYS/WASD
 to move
 
-SPACEBAR to enter dreams of slumberers" ]
+SPACEBAR to enter dreams of slumberers
+
+ESC to pause" ]
 
 [connection signal="end" from="Cutscene" to="." method="_on_Cutscene_end"]
