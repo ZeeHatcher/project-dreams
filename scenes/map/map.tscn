@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/map/res/water_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/map/res/floor_tileset.tres" type="TileSet" id=2]
@@ -19,9 +19,93 @@
 [ext_resource path="res://scenes/minigames/dark_maze/dark_maze.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scenes/minigames/falling_from_sky/falling_from_sky.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/minigames/clocksmith/clocksmith.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/map/assets/night-ambience-17064.mp3" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 69 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -16.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -16.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 5 )
@@ -115,5 +199,14 @@ limit_right = 848
 limit_bottom = 640
 script = ExtResource( 4 )
 tracked = NodePath("../Player")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+volume_db = -16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/in = SubResource( 3 )
+anims/out = SubResource( 4 )
 
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
