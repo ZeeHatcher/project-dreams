@@ -29,17 +29,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://misc/globals.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "IcarusBody2D",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/icarus_controller.gd"
+}, {
+"base": "Node2D",
+"class": "LinearRandSpawner",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/LinearRandSpawner.gd"
+}, {
 "base": "Area2D",
 "class": "PettingSpot",
 "language": "GDScript",
 "path": "res://entities/pets/petting_spot.gd"
+}, {
+"base": "Area2D",
+"class": "SkyFallingBorderBody2D",
+"language": "GDScript",
+"path": "res://scenes/minigames/falling_from_sky/Borders.gd"
 } ]
 _global_script_class_icons={
 "Clock": "",
 "ClockPieceSlot": "",
 "Counter": "",
 "Globals": "",
-"PettingSpot": ""
+"IcarusBody2D": "",
+"LinearRandSpawner": "",
+"PettingSpot": "",
+"SkyFallingBorderBody2D": ""
 }
 
 [application]

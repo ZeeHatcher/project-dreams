@@ -1,20 +1,29 @@
-extends Node2D
-
+extends Area2D
 
 const MAX_HORSE_COUNT := 5
 const FRAME_SECONDS := 0.16
 
-var horse_count := 1 setget _set_horse_count
+export var horse_count := 1 setget _set_horse_count
 
 var _frame_times := [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 
+export var direction: Vector2
+export var speed: float
+
+onready var starting_point = global_position
+var total_travel_dist = 1800.0
 
 func _ready():
 	set_process(true)
 	_set_horse_visibility()
 
+func _physics_process(delta):
+	position += direction * speed * delta
 
 func _process(delta : float):
+	if starting_point.distance_to(global_position) > total_travel_dist:
+		queue_free()
+
 	for i in _frame_times.size():
 		_frame_times[i] += delta
 		
@@ -43,7 +52,6 @@ func _process(delta : float):
 func flip():
 	scale.x = -scale.x
 
-
 func _set_horse_count(value : int):
 	if value < 1:
 		horse_count = 1
@@ -54,13 +62,16 @@ func _set_horse_count(value : int):
 	
 	_set_horse_visibility()
 
-
 func _set_horse_visibility():
 	for i in _frame_times.size():
 		_frame_times[i] = randf() * 0.14
 	
 	$Horse0.position.x = horse_count * -128
-	$Horses/Horse1.visible = false if horse_count < 2 else true
-	$Horses/Horse2.visible = false if horse_count < 3 else true
-	$Horses/Horse3.visible = false if horse_count < 4 else true
-	$Horses/Horse4.visible = false if horse_count < 5 else true
+	$Horses/Horse1.visible = not horse_count < 2 
+	$Horses/Horse2.visible = not horse_count < 3 
+	$Horses/Horse3.visible = not horse_count < 4
+	$Horses/Horse4.visible = not horse_count < 5
+
+func _on_Apollo_body_entered(body):
+	if body is IcarusBody2D:
+		body.hit()

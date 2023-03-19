@@ -8,6 +8,7 @@ enum Minigames {
 	SLIDE_PUZZLE,
 	PETTING_ZOO,
 	DARK_MAZE,
+	SKYFALL,
 	CLOCKSMITH,
 }
 
