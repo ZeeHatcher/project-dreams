@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/minigames/clocksmith/background.png" type="Texture" id=1]
 [ext_resource path="res://entities/clock_piece/9_tooth.tscn" type="PackedScene" id=2]
@@ -9,6 +9,23 @@
 [ext_resource path="res://scenes/minigames/clocksmith/buttons.png" type="Texture" id=7]
 [ext_resource path="res://scenes/minigames/clocksmith/clocksmith.gd" type="Script" id=8]
 [ext_resource path="res://entities/clock_layer/layer_3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/clock.png" type="Texture" id=11]
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 113, 19, 84, 83 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 110, 161, 77, 80 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 111, 118, 83, 26 )
 
 [sub_resource type="SegmentShape2D" id=4]
 b = Vector2( 0, -38 )
@@ -37,6 +54,29 @@ script = ExtResource( 8 )
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
+
+[node name="Guides" type="Node2D" parent="."]
+
+[node name="GuideHand" type="Sprite" parent="Guides"]
+position = Vector2( 127, 192 )
+rotation = -0.785398
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 6 )
+offset = Vector2( 37, -36 )
+
+[node name="GuideHand3" type="Sprite" parent="Guides"]
+position = Vector2( 127, 192 )
+rotation = -2.35619
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 8 )
+offset = Vector2( 31, 33 )
+
+[node name="GuideHand2" type="Sprite" parent="Guides"]
+position = Vector2( 127, 192 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 7 )
+offset = Vector2( -35, 0 )
 
 [node name="Layers" type="Node2D" parent="."]
 
@@ -175,7 +215,19 @@ margin_right = 184.0
 margin_bottom = 16.0
 texture_normal = SubResource( 3 )
 
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 10 )]
+pause_mode = 2
+title = "Clocksmith"
+description = "Arrange the gears such that the hands of the clock on all the layers point upwards at the same time.
+
+Beware, you have 7 tries before the clock breaks.
+
+LEFT CLICK and drag the gears to the slots on the clock to set them into the clock.
+
+Press the Run button once you are ready to make an attempt."
+
 [connection signal="area_entered" from="EndLine" to="." method="_on_EndLine_area_entered"]
 [connection signal="pressed" from="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/LayerButtons/CenterContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer2/CenterContainer/RunButton" to="." method="_on_RunButton_pressed"]
+[connection signal="closed" from="CanvasLayer/Instructions" to="." method="_on_Instructions_closed"]

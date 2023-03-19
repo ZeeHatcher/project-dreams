@@ -1,6 +1,8 @@
 extends Node2D
 
 
+export(int) var tries = 7
+
 var _current_layer = 0
 var _run = false
 
@@ -12,6 +14,8 @@ onready var _label = $"%Label"
 
 func _ready():
 	_show_layer(0)
+	
+	get_tree().paused = true
 
 
 func _show_layer(idx):
@@ -75,6 +79,15 @@ func _on_EndLine_area_entered(area):
 	
 	if hands.size() == 3:
 		MapData.save_minigame_result(Globals.Minigames.CLOCKSMITH, 1)
+	else:
+		tries -= 1
+		
+		if tries == 0:
+			MapData.save_minigame_result(Globals.Minigames.CLOCKSMITH, -1)
 	
 	_run = false
-	_activate(_run)
+	_activate(false)
+
+
+func _on_Instructions_closed():
+	get_tree().paused = false
