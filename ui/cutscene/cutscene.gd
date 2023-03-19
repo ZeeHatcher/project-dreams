@@ -13,7 +13,7 @@ onready var _audio_player = $AudioStreamPlayer
 onready var _timer = $Timer
 
 
-func _ready():
+func play():
 	_audio_player.play()
 	var tween = create_tween()
 	_audio_player.volume_db = -80

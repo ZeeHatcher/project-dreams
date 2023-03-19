@@ -3,22 +3,25 @@ extends Control
 
 const endings = {
 	"good": [
-		{
-			"image": "res://scenes/ending/placeholder_good.png",
-			"text": "Good ending. You are the best acolyte, and you made everyone happy"
-		},
+		"Merging the hope, dreams, and escapes of the ethreal,\ngiving sight to turn their world...",
+		"You have done well in guiding these villagers...\nTheir eyes will gleam the brighter...",
+		"Creation & innovation shall pour from here...\nRefreshing well quenching thirtst of barbarity...",
+		"You take the first steps,\ntowards becoming a paragon of civilization...",
+		"Good Ending\nSweet Dreams"
 	],
 	"neutral": [
-		{
-			"image": "res://scenes/ending/placeholder_neutral.png",
-			"text": "Neutral ending. Being an acolyte's hard work, but you're trying your best."
-		},
+		"Each life holds a vision...\nAmbitions driving them, striving towards it...",
+		"Some will fail, others succeed...\nNatural pattern of life...",
+		"To see the individual for who they are...\nTo sculpt accordingly, can be wise...",
+		"Neutral Ending"
 	],
 	"bad": [
-		{
-			"image": "res://scenes/ending/placeholder_bad.png",
-			"text": "Bad ending. You're quite the mischievious one, giving everyone bad dreams."
-		},
+		"Into the bowls of Tartarus your mind wanders...",
+		"Echoes of this village will ring,\ntainting the land itself...",
+		"Base creatures can sense these things...",
+		"Despair seeps into earth...\nDreams turning to dust...\nSpirit decaying before the body...",
+		"Even Hades would be proud...\nYour nightmare spreads...",
+		"Evil Ending\nNightmare"
 	],
 }
 
@@ -33,17 +36,14 @@ func _ready():
 		score += res
 	
 	var outcome = "neutral"
-	if score == minigames_count:
+	if score >= minigames_count - 1:
 		outcome = "good"
-	elif score == -minigames_count:
+	elif score <= -(minigames_count - 1):
 		outcome = "bad"
 	
 	_cutscene.content = endings[outcome]
-
-
-func _unhandled_input(event):
-	if event.is_action_pressed("interact"):
-		_cutscene.next_page()
+	
+	_cutscene.play()
 
 
 func _on_Cutscene_end():
