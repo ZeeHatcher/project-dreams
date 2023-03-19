@@ -6,6 +6,7 @@ export(Array, PackedScene) var pets
 var _score = 0
 
 onready var _conveyor = $Conveyor
+onready var _bar = $CanvasLayer/MarginContainer/HappinessBar
 onready var _total_pets = pets.size()
 
 
@@ -34,6 +35,8 @@ func _add_pet_to_conveyor():
 	pet.connect("satisfied", self, "_on_Pet_satisfied")
 	pet.connect("angered", self, "_next_pet")
 	_conveyor.add_item(pet)
+	
+	_bar.pet = pet
 
 
 func _game_over():

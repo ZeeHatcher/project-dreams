@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/minigames/petting_zoo/petting_zoo.gd" type="Script" id=1]
 [ext_resource path="res://entities/pets/lion/lion.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://entities/pets/goat/goat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/pets/owl/owl.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/minigames/petting_zoo/outdoor-bg.jpg" type="Texture" id=7]
+[ext_resource path="res://scenes/minigames/petting_zoo/happiness_bar.gd" type="Script" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -28,10 +29,27 @@ script = ExtResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HappinessBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 630.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 14 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 8 )
+
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource( 4 )]
 title = "Petting Zoo"
-description = "Pet the animals correctly to make them happy. Be careful, petting the wrong spots will make them angry!
+description = "What are these animals doing here!? Maybe they want some pets?
 
-Hold LEFT CLICK and move your mouse to pet the animal."
+Hold LEFT CLICK and move your mouse over the animal to pet it. Pet the right zone to make the animal happy."
 
 [connection signal="closed" from="CanvasLayer/Instructions" to="." method="_on_Instructions_closed"]

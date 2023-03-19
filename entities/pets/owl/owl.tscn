@@ -39,7 +39,7 @@ angry_texture = SubResource( 3 )
 [node name="PettingSpot" type="Area2D" parent="Spots" index="0"]
 position = Vector2( 9, -96 )
 script = ExtResource( 3 )
-enjoyment = 1.0
+enjoyment = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot" index="0"]
 shape = SubResource( 4 )
@@ -47,7 +47,7 @@ shape = SubResource( 4 )
 [node name="PettingSpot2" type="Area2D" parent="Spots" index="1"]
 position = Vector2( 17, -51 )
 script = ExtResource( 3 )
-enjoyment = -1.0
+enjoyment = -0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot2" index="0"]
 shape = SubResource( 5 )
@@ -55,7 +55,7 @@ shape = SubResource( 5 )
 [node name="PettingSpot3" type="Area2D" parent="Spots" index="2"]
 position = Vector2( -15, -54 )
 script = ExtResource( 3 )
-enjoyment = -1.0
+enjoyment = -0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot3" index="0"]
 shape = SubResource( 6 )
@@ -63,7 +63,7 @@ shape = SubResource( 6 )
 [node name="PettingSpot4" type="Area2D" parent="Spots" index="3"]
 position = Vector2( 0, -21 )
 script = ExtResource( 3 )
-enjoyment = -1.0
+enjoyment = -0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot4" index="0"]
 shape = SubResource( 7 )
@@ -71,7 +71,7 @@ shape = SubResource( 7 )
 [node name="PettingSpot5" type="Area2D" parent="Spots" index="4"]
 position = Vector2( 26, -22 )
 script = ExtResource( 3 )
-enjoyment = -1.0
+enjoyment = -0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spots/PettingSpot5" index="0"]
 shape = SubResource( 7 )
