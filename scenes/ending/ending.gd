@@ -31,14 +31,18 @@ onready var _cutscene = $Cutscene
 func _ready():
 	var minigames_count = MapData.minigames_result.size()
 	
-	var score = 0
+	var wins = 0
+	var fails = 0
 	for res in MapData.minigames_result.values():
-		score += res
+		if res == 1:
+			wins += 1
+		elif res == -1:
+			fails += 1
 	
 	var outcome = "neutral"
-	if score >= minigames_count - 1:
+	if wins >= 5:
 		outcome = "good"
-	elif score <= -(minigames_count - 1):
+	elif fails >= 4:
 		outcome = "bad"
 	
 	_cutscene.content = endings[outcome]
