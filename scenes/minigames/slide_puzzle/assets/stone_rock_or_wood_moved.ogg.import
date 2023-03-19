@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stone_rock_or_wood_moved.ogg-8232a966801756409baf3d194e2d3b5b.oggstr"
+
+[deps]
+
+source_file="res://scenes/minigames/slide_puzzle/assets/stone_rock_or_wood_moved.ogg"
+dest_files=[ "res://.import/stone_rock_or_wood_moved.ogg-8232a966801756409baf3d194e2d3b5b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
