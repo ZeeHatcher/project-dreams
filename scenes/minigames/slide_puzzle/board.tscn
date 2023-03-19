@@ -68,7 +68,7 @@ timer_path = NodePath("GameTimer")
 
 [node name="GameTimer" type="Timer" parent="Hud/MarginContainerTL/VSplitContainer/Clock"]
 unique_name_in_owner = true
-wait_time = 600.0
+wait_time = 300.0
 one_shot = true
 
 [node name="Turns" type="Label" parent="Hud/MarginContainerTL/VSplitContainer"]

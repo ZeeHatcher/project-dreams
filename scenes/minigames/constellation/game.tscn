@@ -333,11 +333,11 @@ volume_db = -26.041
 
 [node name="snd_cleared" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -15.743
+volume_db = -20.514
 
 [node name="snd_time_up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -17.174
+volume_db = -20.513
 pitch_scale = 0.66
 
 [connection signal="cleared" from="StarPath" to="." method="_on_StarPath_cleared"]

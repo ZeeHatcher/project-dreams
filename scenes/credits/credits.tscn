@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/credit_entry/credit_entry.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/credits/credits.gd" type="Script" id=2]
+[ext_resource path="res://scenes/main_menu/background.png" type="Texture" id=3]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -73,7 +79,7 @@ margin_top = 166.0
 margin_right = 540.0
 margin_bottom = 198.0
 title = "Sound Design"
-contributors = [ "crystalyatrigame" ]
+contributors = [ "Savegabe" ]
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_top = 302.0
