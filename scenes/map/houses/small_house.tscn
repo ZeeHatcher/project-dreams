@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/map/houses/res/building_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/map/houses/res/furniture_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/map/res/building_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/map/res/furniture_tileset.tres" type="TileSet" id=2]
 
 [node name="SmallHouse" type="Node2D"]
 
